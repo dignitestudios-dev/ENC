@@ -1,9 +1,10 @@
 import React from "react";
 import Navber from "../global/Navber";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import Cookies from "js-cookie";
 const Hero = () => {
-  const navigate=useNavigate("");
+  const navigate = useNavigate("");
+  const token = Cookies.get("auth");
   return (
     <div className="   ">
       <div className="w-full  bg-banner flex flex-col   relative ">
@@ -17,10 +18,22 @@ const Hero = () => {
             <br />
             individuals with disabilities are seen, heard, and supported.
           </p>
-          <div className="flex items-center gap-6 justify-center text-white " >
-            <button onClick={()=>navigate("/signup")} className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]" >Sign up</button>
-            <button onClick={()=>navigate("/login")} className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]" >Login</button>
-          </div>
+          {!token && (
+            <div className="flex items-center gap-6 justify-center text-white ">
+              <button
+                onClick={() => navigate("/signup")}
+                className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
+              >
+                Sign up
+              </button>
+              <button
+                onClick={() => navigate("/login")}
+                className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
+              >
+                Login
+              </button>
+            </div>
+          )}
         </div>
         <div className="flex flex-cols  justify-center items-center absolute bottom-8 lg:bottom-1 px-2 lg:px-32 lg:gap-x-12 ">
           <img
