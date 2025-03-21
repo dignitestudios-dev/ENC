@@ -1,8 +1,5 @@
-import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import ApointmentsList from "../component/apointments/AppointmentsList";
-import BookAppointmentModal from "../component/apointments/BookAppointmentModal";
-import PaymentMethodModal from "../component/apointments/PaymentMethod";
 import { useNavigate } from "react-router-dom";
 
 export default function Appointments() {

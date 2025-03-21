@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -7,14 +6,13 @@ import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Login from "./pages/authentication/Login";
 import ForgotPassword from "./pages/authentication/ForgotPassword";
-import Verify from "./pages/authentication/verify";
+import Verify from "./pages/authentication/Verify";
 import ResetPassword from "./pages/authentication/ResetPassword";
 import PasswordUpdated from "./pages/authentication/PasswordUpdated";
 import SignUp from "./pages/onboarding/Signup";
 import VerifyOtp from "./pages/onboarding/VerifyOtp";
 import ProfileCreated from "./pages/onboarding/ProfileCreate";
 import Setting from "./pages/Settings";
-import ChangedPassword from "./component/authentication/ChangedPassword";
 import Profile from "./pages/Profile";
 import Appointments from "./pages/Appointments";
 
