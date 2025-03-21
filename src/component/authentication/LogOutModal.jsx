@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 const LogOutModal = ({logOutModal,setLogOutModal}) => {
   const navigate=useNavigate(""); 
   return (
@@ -17,7 +18,8 @@ const LogOutModal = ({logOutModal,setLogOutModal}) => {
               setLogOutModal(!logOutModal)
             }} className="bg-[#21293514] text-[#212935] text-sm px-4 py-1 rounded-[14px] w-[140px] h-[44px]">No</button>
             <button onClick={()=>{  
-               setLogOutModal(!logOutModal)                          
+               setLogOutModal(!logOutModal)    
+               Cookies.remove("auth");                
               navigate("/login")                             
             }}  className="w-[140px] h-[44px] rounded-[14px] bg-[#EE3131] text-white flex gap-2 items-center justify-center text-md font-medium">Yes</button>
             

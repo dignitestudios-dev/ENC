@@ -3,6 +3,7 @@ import { FaCheck } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 
 const ProfileUpdatedModal = ({ profileUpdate, setProfileUpdate }) => {
+
   return (
     profileUpdate && (
       <div className="w-screen h-screen flex items-center justify-center bg-[rgba(0,0,0,0.4)] fixed top-0 left-0 right-0 bottom-0 z-30 px-4">
@@ -15,7 +16,7 @@ const ProfileUpdatedModal = ({ profileUpdate, setProfileUpdate }) => {
           </button>
 
           <div className="flex justify-center items-center mb-4">
-            <div className="rounded-full bg-[#181818] p-4 flex items-center justify-center">
+            <div  className="rounded-full bg-[#181818] cursor-pointer p-4 flex items-center justify-center">
               <FaCheck className="text-white   text-4xl" />
             </div>
           </div>

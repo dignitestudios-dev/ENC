@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import LogOutModal from "../authentication/LogOutModal";
 import BookAppointmentModal from "../apointments/BookAppointmentModal";
 import PaymentMethodModal from "../apointments/PaymentMethod";
-
+import Cookies from "js-cookie";
 const Navber = () => {
   const [open, setOpen] = useState(false);
   const [logout, setIsLogout] = useState(false);
@@ -13,9 +13,12 @@ const Navber = () => {
   const [isAppointment, setIsAppointment] = useState(false);
   const [isPaymentMethod, setIsPaymentMethod] = useState(false);
   const [selectedTime, setSelectedTime] = useState(null);
+  const token = Cookies.get("auth");
+  const navigate=useNavigate("");
   const handlenav = () => {
     setOpen(!open);
   };
+
   return (
     <div className="">
       <div className="w-full relative lg:flex items-center justify-between px-6 lg:px-24 py-3 hidden all-colors text-white ">
@@ -37,15 +40,28 @@ const Navber = () => {
           <NavLink to={"/contact"} className="text-base font-medium">
             Contact Us
           </NavLink>
-          <button onClick={()=>setIsAppointment(true)} className="bg-[#000000] font-[500] h-[44px] py-3 px-3 rounded-[4px] text-[16px]">
+          <button
+            onClick={() => {
+              if (token) {
+                setIsAppointment(true);
+              }
+              else{
+                navigate("/login")
+              }
+            }}
+            className="bg-[#000000] font-[500] h-[44px] py-3 px-3 rounded-[4px] text-[16px]"
+          >
             Book an Appointment
           </button>
-          <div
-            onClick={() => setIsProfile(!profile)}
-            className="cursor-pointer"
-          >
-            <img src="/dr.jpg" alt="" className="w-10 h-10 rounded-full" />
-          </div>
+          {token && (
+            <div
+              onClick={() => setIsProfile(!profile)}
+              className="cursor-pointer"
+            >
+              <img src="/dr.jpg" alt="" className="w-10 h-10 rounded-full" />
+            </div>
+          )}
+
           {profile && (
             <div className="bg-[#FFFFFF] shadow-lg  px-3 py-5 w-[206px] rounded-[13px] z-40 absolute top-24 right-14">
               <ul>
@@ -70,6 +86,7 @@ const Navber = () => {
                     to={""}
                     onClick={() => {
                       setIsLogout(!logout);
+                   
                     }}
                     className={"text-black font-[400] text-[16px]"}
                   >
@@ -137,7 +154,11 @@ const Navber = () => {
         selectedTime={selectedTime}
         setSelectedTime={setSelectedTime}
       />
-      <PaymentMethodModal selectedTime={selectedTime} isPaymentMethod={isPaymentMethod} setIsPaymentMethod={setIsPaymentMethod}  />
+      <PaymentMethodModal
+        selectedTime={selectedTime}
+        isPaymentMethod={isPaymentMethod}
+        setIsPaymentMethod={setIsPaymentMethod}
+      />
     </div>
   );
 };

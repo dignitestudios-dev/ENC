@@ -2,15 +2,18 @@ import AuthInput from "../../component/authentication/AuthInput";
 import AuthSubmitBtn from "../../component/authentication/AuthSubmitBtn";
 import { useNavigate } from "react-router";
 import { IoMdArrowBack } from "react-icons/io";
-
+import Cookies from "js-cookie";
 const Login = () => {
   const navigate = useNavigate();
-
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <div className="w-full flex flex-col justify-center  h-full items-center " >
         <form
-          onSubmit={() => navigate("/verify-otp")}
+          onSubmit={(e) =>{
+            e.preventDefault();
+            Cookies.set('auth', true)
+            navigate("/")
+          }}
           className="bg-white w-full px-10 lg:px-0 lg:w-[400px] flex flex-col justify-start items-center gap-8"
         >
           <div className="flex w-full items-center ">

@@ -2,13 +2,15 @@ import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import EditProfileModal from "../component/Profile/EditProfile";
 import ProfileUpdatedModal from "../component/Profile/ProfileUpdated";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
   const [profileUpdate, setProfileUpdate] = useState(false);
+  const navigate=useNavigate("");
   return (
     <div className="px-24 py-20 h-screen ">
-      <div className="flex items-center gap-4">
+      <div onClick={()=>navigate(-1)} className="cursor-pointer flex items-center gap-4">
         <FaArrowLeft />
         <h3 className="font-[600] text-[32px]">Profile</h3>
       </div>
