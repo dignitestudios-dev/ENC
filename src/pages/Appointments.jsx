@@ -15,7 +15,6 @@ export default function Appointments() {
       <div className="bg-[#E3E3E3] h-[500px] px-5 py-5 mt-5">
         <ApointmentsList />
       </div>
-     
     </div>
   );
 }

@@ -10,7 +10,10 @@ const SignUp = () => {
     <div className="flex w-full h-screen">
       <div className="w-full flex flex-col justify-center  h-full items-center ">
         <form
-          onSubmit={() => navigate("/verify-otp")}
+          onSubmit={(e) =>{
+            e.preventDefault();
+            navigate("/help-us")
+          }}
           className="bg-white w-full px-10 lg:px-0 lg:w-[400px] flex mt-5 flex-col justify-start items-center gap-8"
         >
           <div className="flex w-full items-center ">
@@ -72,7 +75,7 @@ const SignUp = () => {
             />
           </div>
           <div className=" gap-4 w-full">
-            <AuthSubmitBtn text={"Log In"} />
+            <AuthSubmitBtn text={"Sign Up"} />
             <p className="text-center w-full mt-3 font-[400] text-[#565656] text-[12px]">
               Already have an account?{" "}
               <span className="font-[600] text-black">Log In </span>

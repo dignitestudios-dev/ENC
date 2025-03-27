@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Navber from "../global/Navber";
 import { NavLink, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import BookAppointmentModal from "../apointments/BookAppointmentModal";
+import PaymentMethodModal from "../apointments/PaymentMethod";
 const Hero = () => {
   const navigate = useNavigate("");
+  const [isAppointment, setIsAppointment] = useState(false);
+  const [isPaymentMethod, setIsPaymentMethod] = useState(false);
+  const [selectedTime, setSelectedTime] = useState(null);
   const token = Cookies.get("auth");
   return (
     <div className="   ">
@@ -18,22 +23,33 @@ const Hero = () => {
             <br />
             individuals with disabilities are seen, heard, and supported.
           </p>
-          {!token && (
-            <div className="flex items-center gap-6 justify-center text-white ">
+          <div className="flex items-center gap-6 justify-center text-white ">
+            {!token ? (
+              <>
+                <button
+                  onClick={() => navigate("/signup")}
+                  className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
+                >
+                  Sign up
+                </button>
+                <button
+                  onClick={() => navigate("/login")}
+                  className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
+                >
+                  Login
+                </button>
+              </>
+            ) : (
               <button
-                onClick={() => navigate("/signup")}
-                className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
+                onClick={() => {
+                  setIsAppointment(true);
+                }}
+                className="bg-[#000000] font-[500] h-[44px] py-3 px-3 rounded-[4px] text-[16px]"
               >
-                Sign up
+                Book an Appointment
               </button>
-              <button
-                onClick={() => navigate("/login")}
-                className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
-              >
-                Login
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
         <div className="flex flex-cols  justify-center items-center absolute bottom-8 lg:bottom-1 px-2 lg:px-32 lg:gap-x-12 ">
           <img
@@ -54,6 +70,18 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <BookAppointmentModal
+        isAppointment={isAppointment}
+        setIsAppointment={setIsAppointment}
+        setIsPaymentMethod={setIsPaymentMethod}
+        selectedTime={selectedTime}
+        setSelectedTime={setSelectedTime}
+      />
+      <PaymentMethodModal
+        selectedTime={selectedTime}
+        isPaymentMethod={isPaymentMethod}
+        setIsPaymentMethod={setIsPaymentMethod}
+      />
     </div>
   );
 };

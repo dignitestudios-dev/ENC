@@ -58,7 +58,7 @@ const Login = () => {
           </div>
           <div className=" gap-4 w-full">
             <AuthSubmitBtn text={"Log In"} />
-          <p className="text-center w-full mt-3 font-[400] text-[#565656] text-[12px]" >Don’t have an account? <span className="font-[600] text-black" > Sign Up </span></p>
+          <p className="text-center w-full mt-3 font-[400] text-[#565656] text-[12px]" >Don’t have an account? <span className="font-[600] text-black cursor-pointer " onClick={()=>navigate("/signup")}  > Sign Up </span></p>
           </div>
         </form>
       </div>

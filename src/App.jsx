@@ -15,6 +15,7 @@ import ProfileCreated from "./pages/onboarding/ProfileCreate";
 import Setting from "./pages/Settings";
 import Profile from "./pages/Profile";
 import Appointments from "./pages/Appointments";
+import HelpUs from "./pages/onboarding/HelpUs";
 
 function App() {
   return (
@@ -23,13 +24,14 @@ function App() {
       <Route path="about" element={<Layout pages={<AboutUs />} />} />
       <Route path="contact" element={<Layout pages={<Contact />} />} />
       <Route path="login" element={<Login />}/>
-      <Route path="forgotPassword"  element={<ForgotPassword />} />
-      <Route path="verifyEmail"  element={<Verify />} />
-      <Route path="resetPassword"  element={<ResetPassword />} />
-      <Route path="passwordUpdated"  element={<PasswordUpdated />} />
+      <Route path="forgot-password"  element={<ForgotPassword />} />
+      <Route path="verify-email"  element={<Verify />} />
+      <Route path="reset-password"  element={<ResetPassword />} />
+      <Route path="password-updated"  element={<PasswordUpdated />} />
       <Route path="signup"  element={<SignUp />} />
-      <Route path="verifyOtp"  element={<VerifyOtp />} />
-      <Route path="profileCreated"  element={<ProfileCreated />} />
+      <Route path="help-us"  element={<HelpUs />} />
+      <Route path="verify-otp"  element={<VerifyOtp />} />
+      <Route path="profile-created"  element={<ProfileCreated />} />
       <Route path="setting"  element={<Layout pages={<Setting />} />} />
       <Route path="profile"  element={<Layout pages={<Profile />} />} />
       <Route path="appointment"  element={<Layout pages={<Appointments />} />} />

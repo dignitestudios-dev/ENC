@@ -12,7 +12,7 @@ const AuthInput = ({ state, setState, text, type, error, placeholder,forgetPassw
           {text}
         </label>
         {forgetPassword&& (
-          <NavLink to={"/forgotPassword"} className={"text-[12px] font-[400] text-[#0084FF]"}>
+          <NavLink to={"/forgot-password"} className={"text-[12px] font-[400] text-[#0084FF]"}>
             Forgot Password?
           </NavLink>
         )}

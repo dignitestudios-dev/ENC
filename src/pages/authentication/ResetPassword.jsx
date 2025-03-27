@@ -1,16 +1,19 @@
+import { useState } from "react";
 import AuthInput from "../../component/authentication/AuthInput";
 import AuthSubmitBtn from "../../component/authentication/AuthSubmitBtn";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router";
+import PasswordUpdateModal from "../../component/authentication/PasswordUpdateModal";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
+  const [PasswordUpdate,setPasswordUpdate]=useState(false);
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate(-1)
+          setPasswordUpdate(true)
         }}
         className="w-full  h-full bg-white px-4 py-4 lg:p-20 z-10 flex flex-col overflow-y-auto justify-center items-center gap-8"
       >
@@ -55,6 +58,7 @@ const ResetPassword = () => {
           />
         </div>
       </div>
+      <PasswordUpdateModal PasswordUpdate={PasswordUpdate} setPasswordUpdate={setPasswordUpdate} />
     </div>
   );
 };

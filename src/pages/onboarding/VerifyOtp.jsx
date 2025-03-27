@@ -7,10 +7,13 @@ const VerifyOtp = () => {
   return (
     <div className="w-screen h-screen flex items-center justify-start">
       <form
-        onSubmit={() => navigate("/app/dashboard")}
+        onSubmit={(e) => {
+          navigate("/login");
+          e.preventDefault();
+        }}
         className="w-full bg-white px-4 py-8 lg:p-20 z-10 flex flex-col overflow-y-auto justify-center items-center gap-8"
       >
-        <div className="lg:w-[450px]" >
+        <div className="lg:w-[450px]">
           <div className="flex w-full h-full items-center flex-col">
             <h1 className="text-[36px] font-bold text-black ">Verification</h1>
             <p className="font-normal text-nowrap mb-5 mt-3 text-[16px] text-[#868686] ">
@@ -29,11 +32,14 @@ const VerifyOtp = () => {
           </div>
 
           <div className="w-full h-auto gap-1 mt-5 mb-5">
-            <div className="w-full lg:w-[434px] flex gap-1 justify-center items-center">
+            <div className="w-full lg:w-[434px] flex gap-1 justify-start items-center">
               <span className="text-[13px] font-medium text-[#C2C6CB]">
                 Didn't receive a code?
               </span>
-              <button className="outline-none text-[13px] border-none text-[#212935] font-bold">
+              <button
+                type="button"
+                className="outline-none text-[13px] border-none text-[#212935] font-bold"
+              >
                 Resend now
               </button>
             </div>

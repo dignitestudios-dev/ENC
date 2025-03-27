@@ -14,7 +14,7 @@ const Navber = () => {
   const [isPaymentMethod, setIsPaymentMethod] = useState(false);
   const [selectedTime, setSelectedTime] = useState(null);
   const token = Cookies.get("auth");
-  const navigate=useNavigate("");
+  const navigate = useNavigate("");
   const handlenav = () => {
     setOpen(!open);
   };
@@ -40,19 +40,21 @@ const Navber = () => {
           <NavLink to={"/contact"} className="text-base font-medium">
             Contact Us
           </NavLink>
-          <button
-            onClick={() => {
-              if (token) {
-                setIsAppointment(true);
-              }
-              else{
-                navigate("/login")
-              }
-            }}
-            className="bg-[#000000] font-[500] h-[44px] py-3 px-3 rounded-[4px] text-[16px]"
-          >
-            Book an Appointment
-          </button>
+          {!token && (
+            <button
+              onClick={() => {
+                if (token) {
+                  setIsAppointment(true);
+                } else {
+                  navigate("/login");
+                }
+              }}
+              className="bg-[#000000]  font-[500] h-[44px] py-3 px-3 rounded-[4px] text-[16px]"
+            >
+              Book an Appointment
+            </button>
+          )}
+
           {token && (
             <div
               onClick={() => setIsProfile(!profile)}
@@ -86,7 +88,6 @@ const Navber = () => {
                     to={""}
                     onClick={() => {
                       setIsLogout(!logout);
-                   
                     }}
                     className={"text-black font-[400] text-[16px]"}
                   >

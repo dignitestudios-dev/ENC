@@ -14,7 +14,7 @@ const ForgotPassword = () => {
           <form
             onSubmit={(e) =>{
               e.preventDefault()
-              navigate("/verifyEmail")
+              navigate("/verify-email")
               }}
             className="bg-white px-5 lg:px-0 w-full lg:w-[400px] flex flex-col justify-start  gap-8"
           >
