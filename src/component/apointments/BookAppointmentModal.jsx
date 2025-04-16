@@ -5,6 +5,7 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import { FaRegClock } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
+import { formatTimeRange } from "../../lib/utils";
 
 export default function BookAppointmentModal({
   isAppointment,
@@ -17,6 +18,7 @@ export default function BookAppointmentModal({
   const [step, setStep] = useState(1);
   const [personalDetail, setPersonalDetail] = useState({});
   const [SessionDetail, setSessionDetail] = useState({});
+  console.log(selectedTime, "time");
   return (
     isAppointment && (
       <div className="w-screen h-screen flex items-center justify-center bg-[rgba(0,0,0,0.4)] fixed top-0 left-0 right-0 bottom-0 z-30 px-4">
@@ -31,7 +33,10 @@ export default function BookAppointmentModal({
               </div>
               <div>
                 <button
-                  onClick={() => setIsAppointment(false)}
+                  onClick={() => {
+                    setStep(1)
+                    setIsAppointment(false)
+                  }}
                   className=" text-black hover:text-gray-600"
                 >
                   <IoMdClose className="text-2xl" />
@@ -69,7 +74,10 @@ export default function BookAppointmentModal({
                         {selectedTime && step > 1 && (
                           <li className="flex items-center gap-2 text-[#1A1A1A99] font-[700] text-[16px]">
                             <CiCalendar />{" "}
-                            {selectedTime?.time +
+                            {formatTimeRange(
+                              selectedTime?.startTime,
+                              selectedTime?.endTime
+                            ) +
                               " " +
                               new Date(selectedTime?.date).toDateString()}
                           </li>

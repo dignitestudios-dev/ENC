@@ -21,7 +21,7 @@ export default function PaymentMethodModal({
 }) {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const stripePromise = loadStripe(import.meta.env.VITE_APP_STRIPE_KEY); 
+  const stripePromise = loadStripe(import.meta.env.VITE_APP_STRIPE_KEY);
   const { loading, ValidAppointment } = useValidateAppointment();
 
   const appearance = {
@@ -54,9 +54,10 @@ export default function PaymentMethodModal({
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const contentWidth = pdfWidth - 30; // with some margin
       const contentHeight = (canvas.height * contentWidth) / canvas.width;
-
       pdf.addImage(imgData, "PNG", 15, 15, contentWidth, contentHeight);
-      pdf.save("snapshot.pdf");
+      pdf.save("Booking.pdf");
+      setStep(1);
+      setIsPaymentMethod(!isPaymentMethod);
     } catch (err) {
       console.error("Failed to generate PDF:", err);
     } finally {
@@ -70,7 +71,12 @@ export default function PaymentMethodModal({
         <div className="bg-[#FFFFFF] backdrop-blur-[100px] w-[540px] pb-10 pt-4 rounded-[12px] ">
           <div className="flex items-center flex-col px-5 justify-center gap-y-2 h-full">
             <div className="flex w-full justify-end">
-              <button onClick={() => setIsPaymentMethod(!isPaymentMethod)}>
+              <button
+                onClick={() => {
+                  setStep(1);
+                  setIsPaymentMethod(!isPaymentMethod);
+                }}
+              >
                 <IoMdClose />
               </button>
             </div>
