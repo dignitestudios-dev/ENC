@@ -1,0 +1,47 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ensure navigation arrows are styled properly */
+.swiper-button-next,
+.swiper-button-prev {
+  color: black !important; /* Set color to ensure they are visible */
+  transition: all 0.3s ease !important;
+  background-color: white ;
+  box-shadow: 0px 0px 10px gray;
+  border-radius: 100% !important;
+  height: 30px !important;
+  width: 30px !important;
+  top: 30px !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #ff5733 !important; /* Set hover color */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  z-index: 10 !important; /* Ensure the buttons are on top */
+}
+
+

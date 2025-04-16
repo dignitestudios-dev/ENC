@@ -1,15 +1,87 @@
+import { useEffect, useRef, useState } from "react";
 import AuthSubmitBtn from "../../component/authentication/AuthSubmitBtn";
 import { useNavigate } from "react-router";
+import {
+  useSendEmailVerification,
+  useEmailVerification,
+} from "../../hooks/api/Post";
+import { emailVerificationValues } from "../../init/authentication/AuthValues";
+import { SuccessToast } from "../../component/global/Toaster";
 
 const VerifyOtp = () => {
+  const { SendOtpPostData } = useSendEmailVerification();
   const navigate = useNavigate();
-  const arr = [1, 2, 3, 4, 5, 6];
+  const [isResendDisabled, setIsResendDisabled] = useState(false);
+  const [timer, setTimer] = useState(30);
+  const otpRefs = useRef([]);
+  
+  useEffect(() => {
+    SendOtpPostData("auth/emailVerificationOTP", false, null);
+  }, []);
+
+  useEffect(() => {
+    let interval;
+    if (isResendDisabled && timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    } else if (timer === 0) {
+      clearInterval(interval);
+      setIsResendDisabled(false);
+    }
+    return () => clearInterval(interval); // Clean up on component unmount
+  }, [isResendDisabled, timer]);
+
+  const handleResendClick = () => {
+    SendOtpPostData("auth/emailVerificationOTP", false, null);
+    setIsResendDisabled(true);
+    setTimer(30); 
+  };
+
+  const [otp, setOtp] = useState(emailVerificationValues.otp);
+  const { loading, verifyOtpPostData } = useEmailVerification();
+
+  const handleChange = (e, i) => {
+    const value = e.target.value;
+    if (/[^0-9]/.test(value) && value !== "") return; 
+    const otpval = [...otp]; 
+    if (value === "") {
+      otpval[i] = "";
+      setOtp(otpval);
+      if (i > 0) {
+        otpRefs.current[i - 1].focus();
+      }
+    } else {
+      otpval[i] = value;
+      setOtp(otpval); 
+      if (value && otpRefs.current[i + 1]) {
+        otpRefs.current[i + 1].focus();
+      }
+    }
+  };
+  const isOtpComplete = otp.join("").length < 5;
+  console.log(isOtpComplete, otp);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const otpValue = otp.join("");
+    const data = { otp: otpValue };
+    const response = await verifyOtpPostData("/auth/verifyEmail", data);
+    if (response?.success) {
+      console.log(response);
+      SuccessToast(response?.message);
+      navigate("/help-us");
+    } else {
+      console.error("OTP verification failed", response?.message);
+    }
+  };
+
   return (
     <div className="w-screen h-screen flex items-center justify-start">
       <form
         onSubmit={(e) => {
-          navigate("/login");
           e.preventDefault();
+          handleSubmit(e);
         }}
         className="w-full bg-white px-4 py-8 lg:p-20 z-10 flex flex-col overflow-y-auto justify-center items-center gap-8"
       >
@@ -21,12 +93,16 @@ const VerifyOtp = () => {
             </p>
           </div>
 
-          <div className="w-full h-auto flex justify-start items-center gap-2 my-2 flex-wrap">
-            {arr.map((item) => (
+          <div className="w-full h-auto  flex justify-center items-center gap-2 my-2 flex-wrap">
+            {otp.map((item, index) => (
               <input
-                key={item}
+                key={index}
+                value={item}
+                onChange={(e) => handleChange(e, index)}
+                name="otp"
                 className="flex-1 min-w-[50px] max-w-[66px] h-[60px] rounded-xl bg-transparent outline-none text-center border border-[#c2c6cb] text-3xl focus:bg-[#D0FCB333] focus-within:border-[#55C9FA]"
                 maxLength={1}
+                ref={(el) => (otpRefs.current[index] = el)} // Set ref for each input
               />
             ))}
           </div>
@@ -39,12 +115,18 @@ const VerifyOtp = () => {
               <button
                 type="button"
                 className="outline-none text-[13px] border-none text-[#212935] font-bold"
+                onClick={handleResendClick}
+                disabled={isResendDisabled}
               >
-                Resend now
+                {isResendDisabled ? `Resend in ${timer}s` : "Resend now"}
               </button>
             </div>
           </div>
-          <AuthSubmitBtn text={"Verify"} />
+          <AuthSubmitBtn
+            dissabled={isOtpComplete}
+            loading={loading}
+            text={"Verify"}
+          />
         </div>
       </form>
 

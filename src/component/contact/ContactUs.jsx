@@ -1,9 +1,38 @@
 import React from "react";
+import { ContactUsValues } from "../../init/app/ContactUsValues";
+import { ContactUsSchema } from "../../schema/app/ContactSchema";
+import { useAppointment, useFinanlizeAppointment } from "../../hooks/api/Post";
+import AuthSubmitBtn from "../authentication/AuthSubmitBtn";
+import AuthInput from "../authentication/AuthInput";
+import { useFormik } from "formik";
 
 export default function ContactUs() {
+  const { loading, postData } = useAppointment();
+
+  const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
+    useFormik({
+      initialValues: ContactUsValues,
+      validationSchema: ContactUsSchema, // Using the schema here
+      validateOnChange: true,
+      validateOnBlur: true,
+      onSubmit: async (values, actions) => {
+        const payload = {
+          firstName: values.fname,
+          lastName: values.lname,
+          email: values.email,
+          phone: values.phone.toString(),
+          message: values.description,
+        };
+        const res = await postData("landing/contact", false, null, payload);       
+        if (res.success) {
+          console.log("Message sent successfully.");
+          actions.resetForm(); // ← Reset form here
+        }
+      },
+    });
+
   return (
     <div className="bg-[#AFAFAF] relative flex gap-5 px-10 mt-40 py-10 h-[450px] ">
-       
       <div className="flex flex-col w-full justify-between h-full">
         <div>
           <h3 className="font-[500] text-[32px] text-white">
@@ -36,65 +65,106 @@ export default function ContactUs() {
           <p className="text-[20px] font-[400]">You can reach us anytime.</p>
           <form
             className="md:col-span-8 pt-5"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit(e);
+            }}
           >
             <div className="flex flex-wrap -mx-3 ">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <input
-                  className="appearance-none block h-[48px] bg-[#FFFFFF] w-full border-[#35353540] border rounded-[4px] py-3 px-4 mb-3 leading-tight focus:bg-white  focus:outline-[#62466B]"
-                  id="grid-first-name"
-                  type="text"
-                  placeholder="First Name"
+                <AuthInput
+                  holder={"Enter Your First Name"}
+                  text={""}
+                  type={"text"}
+                  name={"fname"}
+                  error={errors.fname}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  touched={touched?.fname}
+                  value={values.fname}
                 />
               </div>
               <div className="w-full md:w-1/2 px-3">
-                <input
-                  className="appearance-none block w-full bg-[#FFFFFF] border-[#35353540] border rounded-[4px] py-3 px-4 leading-tight focus:bg-white focus:outline-[#62466B]"
-                  id="grid-last-name"
-                  type="text"
-                  placeholder="Last Name"
+                <AuthInput
+                  holder={"Enter Your Last Name"}
+                  text={""}
+                  type={"text"}
+                  name={"lname"}
+                  error={errors.lname}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  touched={touched?.lname}
+                  value={values.lname}
                 />
               </div>
             </div>
-            <div className="flex flex-wrap -mx-3 ">
+            <div className="flex flex-wrap mt-3 -mx-3 ">
               <div className="w-full px-3 mb-6 md:mb-0 ">
-                <input
-                  className="appearance-none block w-full bg-[#FFFFFF]  border-[#35353540] border rounded-[4px] py-3 px-4 mb-3 leading-tight  focus:bg-white focus:outline-[#62466B]"
-                  id="grid-email"
-                  type="email"
-                  placeholder="Your Email"
+                <AuthInput
+                  holder={"Enter Your Email"}
+                  text={""}
+                  type={"text"}
+                  name={"email"}
+                  error={errors.email}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  touched={touched?.email}
+                  value={values.email}
                 />
               </div>
             </div>
-            <div className="flex flex-wrap -mx-3 ">
-              <div className="w-full px-3 flex items-center mb-6 md:mb-0 ">     
-              <div className="bg-[#FFFFFF] flex items-center justify-center border h-[48px] rounded-[4px] rounded-r-none py-3 px-4 mb-3" >
-                   <img src="/flag.png" className="w-10" alt="flag"/>
-                </div>          
+
+            <div className="flex flex-wrap -mx-3 mt-3">
+              <div className="w-full px-3 flex items-center  md:mb-0 ">
+                <div className="bg-[#FFFFFF] flex items-center justify-center border h-[48px] rounded-[4px] rounded-r-none py-3 px-4 ">
+                  <img src="/flag.png" className="w-10" alt="flag" />
+                </div>
                 <input
-                  className="appearance-none block h-[48px] w-full bg-[#FFFFFF]  border-[#35353540] border rounded-[4px] rounded-l-none py-3 px-4 mb-3 leading-tight  focus:bg-white focus:outline-[#62466B]"
                   id="grid-phone"
                   type="number"
+                  name="phone"
+                  value={values.phone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={`w-full h-[48px]  bg-transparent  outline-none border order rounded-[4px] rounded-l-none  text-[#262626] px-3 text-[16px] font-normal leading-[20.4px] ${
+                    errors.phone && touched.phone
+                      ? "border-red-500"
+                      : "border-[#D9D9D9]"
+                  } `}
                   placeholder="Phone Number"
                 />
               </div>
+              {errors.phone && touched.phone ? (
+                <p className="text-red-700  mt-2 mx-3 text-sm font-medium">
+                  {errors.phone}
+                </p>
+              ) : null}
             </div>
-            <div className="flex flex-wrap -mx-3 ">
+            <div className="flex flex-wrap mt-3 -mx-3 ">
               <div className="w-full px-3">
                 <textarea
                   rows={6}
-                  className="appearance-none resize-none block w-full bg-[#FFFFFF]  border-[#35353540] border rounded-[4px] py-3 px-4 mb-3 leading-tight  focus:bg-white focus:outline-[#62466B]"
+                  className={`w-full  bg-transparent py-2 outline-none border order border rounded-[4px]  text-[#262626] px-3 text-[16px] font-normal leading-[20.4px] ${
+                    errors.description && touched.description
+                      ? "border-red-500"
+                      : "border-[#D9D9D9]"
+                  } `}
+                  // className="appearance-none resize-none block w-full bg-[#FFFFFF]  border-[#35353540] border rounded-[4px] py-3 px-4 mb-3 leading-tight  focus:bg-white focus:outline-[#62466B]"
                   defaultValue={""}
                   placeholder="How can we help?"
+                  name="description"
+                  value={values.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
+                {errors.description && touched.description ? (
+                  <p className="text-red-700  mb-2 text-sm font-medium">
+                    {errors.description}
+                  </p>
+                ) : null}
               </div>
-              <div className="flex justify-between w-full px-3">
-                <button
-                  className="bg-[#000000] mt-3 text-white font-[500] h-[44px] w-full rounded-[4px] text-[16px]" 
-                  type="submit"
-                >
-                  Send Message
-                </button>
+              <div className="flex justify-between w-full mt-2 px-3">
+                <AuthSubmitBtn text={"Send Message"} loading={loading} />
               </div>
             </div>
           </form>

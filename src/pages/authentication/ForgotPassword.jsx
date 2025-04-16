@@ -3,25 +3,47 @@ import AuthInput from "../../component/authentication/AuthInput";
 import AuthSubmitBtn from "../../component/authentication/AuthSubmitBtn";
 import { useNavigate } from "react-router";
 import { IoMdArrowBack } from "react-icons/io";
+import { useFormik } from "formik";
+import { forgotSchema } from "../../schema/authentication/AuthSchema";
+import { forgotValues } from "../../init/authentication/AuthValues";
+import { useForgetPassword } from "../../hooks/api/Post";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
 
+  const { loading, postData } = useForgetPassword();
+  const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
+    useFormik({
+      initialValues: forgotValues,
+      validationSchema: forgotSchema,
+      validateOnChange: true,
+      validateOnBlur: true,
+      onSubmit: async (values, action) => {
+        const data = {
+          email: values?.email,
+          role:"user"
+        };
+        postData("auth/forgot", false, null, data, "");
+      },
+    });
   return (
     <>
       <div className="flex w-full h-screen overflow-hidden">
         <div className="w-full flex flex-col justify-center  h-full items-center ">
           <form
-            onSubmit={(e) =>{
-              e.preventDefault()
-              navigate("/verify-email")
-              }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              // navigate("/verify-email")
+              handleSubmit(e);
+            }}
             className="bg-white px-5 lg:px-0 w-full lg:w-[400px] flex flex-col justify-start  gap-8"
           >
             <div className=" ">
-              <div onClick={()=>{
-                navigate(-1)
-              }} >
+              <div
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
                 <IoMdArrowBack size={30} />
               </div>
               <div className="w-full text-start mt-10">
@@ -38,10 +60,16 @@ const ForgotPassword = () => {
                 text={"Email Address"}
                 placeholder={"Enter email address"}
                 type={"email"}
+                name={"email"}
+                error={errors.email}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                touched={touched?.email}
+                value={values.email}
               />
             </div>
             <div className="gap-4 w-full">
-              <AuthSubmitBtn text={"Send OTP"} />
+              <AuthSubmitBtn text={"Send OTP"} loading={loading} />
             </div>
           </form>
         </div>

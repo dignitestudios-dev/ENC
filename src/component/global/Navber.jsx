@@ -13,8 +13,13 @@ const Navber = () => {
   const [isAppointment, setIsAppointment] = useState(false);
   const [isPaymentMethod, setIsPaymentMethod] = useState(false);
   const [selectedTime, setSelectedTime] = useState(null);
-  const token = Cookies.get("auth");
+  const token = Cookies.get("token");
+  let user = Cookies.get("admin");
+  user=JSON.parse(user); 
+  console.log();
+  
   const navigate = useNavigate("");
+
   const handlenav = () => {
     setOpen(!open);
   };
@@ -60,7 +65,7 @@ const Navber = () => {
               onClick={() => setIsProfile(!profile)}
               className="cursor-pointer"
             >
-              <img src="/dr.jpg" alt="" className="w-10 h-10 rounded-full" />
+              <img src={user?.profilePicture?user?.profilePicture:"/dr.jpg"} alt="" className="w-10 h-10 rounded-full" />
             </div>
           )}
 
@@ -70,6 +75,7 @@ const Navber = () => {
                 <li className="border-b-[1px] border-[#0000001A] py-2 ">
                   <NavLink
                     to={"/profile"}
+                    state={{user}}
                     className={"text-black font-[400] text-[16px]"}
                   >
                     View Profile
@@ -87,6 +93,7 @@ const Navber = () => {
                   <NavLink
                     to={""}
                     onClick={() => {
+                  
                       setIsLogout(!logout);
                     }}
                     className={"text-black font-[400] text-[16px]"}

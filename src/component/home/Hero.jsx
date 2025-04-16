@@ -9,7 +9,8 @@ const Hero = () => {
   const [isAppointment, setIsAppointment] = useState(false);
   const [isPaymentMethod, setIsPaymentMethod] = useState(false);
   const [selectedTime, setSelectedTime] = useState(null);
-  const token = Cookies.get("auth");
+  const [ClientSecret, setClientSecret] = useState({});
+  const token = Cookies.get("token");
   return (
     <div className="   ">
       <div className="w-full  bg-banner flex flex-col   relative ">
@@ -76,11 +77,13 @@ const Hero = () => {
         setIsPaymentMethod={setIsPaymentMethod}
         selectedTime={selectedTime}
         setSelectedTime={setSelectedTime}
+        setClientSecret={setClientSecret}
       />
       <PaymentMethodModal
         selectedTime={selectedTime}
         isPaymentMethod={isPaymentMethod}
         setIsPaymentMethod={setIsPaymentMethod}
+        ClientSecret={ClientSecret}
       />
     </div>
   );

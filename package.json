@@ -10,16 +10,27 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^3.6.0",
+    "@stripe/stripe-js": "^7.0.0",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7",
     "flickr-justified-gallery": "^2.2.0",
+    "formik": "^2.4.6",
+    "html2canvas": "^1.4.1",
     "js-cookie": "^3.0.5",
+    "jspdf": "^3.0.1",
     "lightgallery": "^2.8.2",
     "react": "^18.3.1",
     "react-calendly": "^4.3.1",
     "react-datepicker": "^8.2.1",
     "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.5.2",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.0.2",
-    "swiper": "^11.1.15"
+    "swiper": "^11.2.6",
+    "ua-parser-js": "^2.0.3",
+    "uuid": "^11.1.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

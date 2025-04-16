@@ -12,9 +12,11 @@ export default function BookAppointmentModal({
   setIsPaymentMethod,
   setSelectedTime,
   selectedTime,
+  setClientSecret,
 }) {
   const [step, setStep] = useState(1);
-  console.log(selectedTime, "selectedTime");
+  const [personalDetail, setPersonalDetail] = useState({});
+  const [SessionDetail, setSessionDetail] = useState({});
   return (
     isAppointment && (
       <div className="w-screen h-screen flex items-center justify-center bg-[rgba(0,0,0,0.4)] fixed top-0 left-0 right-0 bottom-0 z-30 px-4">
@@ -37,7 +39,11 @@ export default function BookAppointmentModal({
               </div>
             </div>
 
-            <div className={`grid ${step!=3?"md:grid-cols-2":"md:grid-cols-1"}  gap-6`}>
+            <div
+              className={`grid ${
+                step != 3 ? "md:grid-cols-2" : "md:grid-cols-1"
+              }  gap-6`}
+            >
               {/* {/ Calendar Section /} */}
               {step != 3 && (
                 <div className="border-r-[1px] px-5">
@@ -87,6 +93,7 @@ export default function BookAppointmentModal({
                   setStep={setStep}
                   setSelectedTime={setSelectedTime}
                   selectedTime={selectedTime}
+                  setPersonalDetail={setPersonalDetail}
                 />
               )}
               {step == 3 && (
@@ -97,6 +104,8 @@ export default function BookAppointmentModal({
                   selectedTime={selectedTime}
                   setIsPaymentMethod={setIsPaymentMethod}
                   setIsAppointment={setIsAppointment}
+                  personalDetail={personalDetail}
+                  setClientSecret={setClientSecret}
                 />
               )}
             </div>

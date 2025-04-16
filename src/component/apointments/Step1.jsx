@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import CustomCalendar from "./Calendar";
+import { useSlote } from "../../hooks/api/Get";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import "swiper/css/navigation"; // Ensure Navigation styles are imported
+import { FreeMode, Navigation, Pagination } from "swiper/modules";
+import { formatDate, formatTimeRange } from "../../lib/utils";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
-export default function Step1({selectedTime,setSelectedTime,setStep}) {
-    const [startDate, setStartDate] = useState(new Date());
-   
-    
-    const timeSlots = [
-      "08:00 AM - 09:00 AM",
-      "10:00 AM - 11:00 AM",
-      "12:00 AM - 01:00 AM",
-      "02:00 AM - 03:00 AM",
-      "04:00 AM - 05:00 AM",
-      "06:00 AM - 07:00 AM",
-    ];
-  
+export default function Step1({ selectedTime, setSelectedTime, setStep }) {
+  const [startDate, setStartDate] = useState(new Date());
+  const swiperRef = useRef(null); // Create a reference for the swiper
+
+  const timeSlots = useSlote("appointments/slots", 1);
+
   return (
     <div>
       <div className="mt-3">
@@ -26,28 +28,58 @@ export default function Step1({selectedTime,setSelectedTime,setStep}) {
       {/* {/ Time Slot Selection /} */}
       <div>
         <h4 className="text-md font-semibold mb-2">Select Time</h4>
-        <div className="grid grid-cols-2 gap-2">
-          {timeSlots.map((time, index) => (
-            <button
-              key={index}
-              onClick={() => setSelectedTime(
-                {
-                  time:time,
-                  date:startDate
-                })}
-              className={`p-2 border rounded-lg ${
-                selectedTime?.time == time
-                  ? "bg-black text-white"
-                  : "border-[#EAEAEA]"
-              }`}
-            >
-              {time}
+        <div className="">
+          <Swiper
+            ref={swiperRef} // Attach the ref to Swiper
+            slidesPerView={2}
+            navigation={{
+              prevEl: ".custom-prev", // Custom prev button
+              nextEl: ".custom-next", // Custom next button
+            }}
+            modules={[FreeMode, Navigation, Pagination]} // Include Pagination if you want pagination dots
+            className="mySwiper !z-40 !w-[90%]"
+          >
+            {timeSlots?.data?.map((time, index) => (
+              <SwiperSlide key={index}>
+                <button
+                  onClick={() =>
+                    setSelectedTime({
+                      startTime: time?.startTime,
+                      endTime: time?.endTime,
+                      date: formatDate(startDate),
+                    })
+                  }
+                  className={`p-2 font-[400] text-[14px] border rounded-lg ${
+                    selectedTime?.startTime === time?.startTime
+                      ? "bg-black text-white"
+                      : "border-[#EAEAEA]"
+                  }`}
+                >
+                  {formatTimeRange(time?.startTime, time?.endTime)}
+                </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="navigation-buttons relative flex items-center justify-between top-[-30px] z-10 ">
+            <button className="custom-prev">
+              <MdKeyboardArrowLeft size={25} />
             </button>
-          ))}
+            <button className="custom-next">
+              <MdKeyboardArrowRight size={25} />
+            </button>
+          </div>
         </div>
       </div>
       <div className="mt-6 w-full">
-        <button onClick={()=>setStep(prev=>prev+1)} className="bg-black w-full text-white px-6 py-2 rounded-lg hover:bg-gray-800">
+        <button
+          onClick={() => setStep((prev) => prev + 1)}
+          disabled={!startDate || !selectedTime} // Disable if either is missing
+          className={`w-full px-6 py-2 rounded-lg ${
+            !startDate || !selectedTime
+              ? "bg-gray-400 text-white cursor-not-allowed" // Disabled styles
+              : "bg-black text-white hover:bg-gray-800" // Enabled styles
+          }`}
+        >
           Next
         </button>
       </div>
