@@ -27,7 +27,7 @@ const SignUp = () => {
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: async (values, actions) => {
-      console.log(values, "data");
+      // console.log(values, "data");
       const form = new FormData();
       form.append("name", values.fullName);
       form.append("email", values.email);

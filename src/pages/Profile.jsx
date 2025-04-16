@@ -10,7 +10,7 @@ export default function Profile() {
   const navigate=useNavigate("");
   let state=useLocation();
   state=state?.state?.user;
-  console.log(state,"user") 
+  // console.log(state,"user") 
   return (
     <div className="px-24 py-20 h-screen ">
       <div onClick={()=>navigate(-1)} className="cursor-pointer flex items-center gap-4">

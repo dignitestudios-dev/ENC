@@ -33,7 +33,7 @@ export default function Verify() {
       role: "user",
     };
    const res=await postData("auth/forgot", false, null, data, "");
-   console.log(res);
+  //  console.log(res);
    
     setIsResendDisabled(true);
     setTimer(30);
@@ -69,7 +69,7 @@ export default function Verify() {
     const data = { email:location?.state?.email,otp: otpValue,role:"user"};
     const response = await verifyOtpPostData("auth/verifyOTP", data);
     if (response?.success) {
-      console.log(response);
+      // console.log(response);
       SuccessToast(response?.message);
       navigate("/reset-password");
     } else {

@@ -6,7 +6,7 @@ export const processSignup = (data, navigate) => {
     Cookies.set("token", data?.data?.token, { expires: 7 });
     Cookies.set("admin", JSON.stringify(data?.data.user), { expires: 7 });
     navigate("/help-us");
-    console.log(data, "data");
+    // console.log(data, "data");
 
     return;
   }
@@ -22,7 +22,7 @@ export const processLogin = (data, navigate) => {
 
 export const processError = (error) => {
   if (error?.response?.data?.message) {
-    console.log(error?.response?.data?.message, "erross");
+    // console.log(error?.response?.data?.message, "erross");
     ErrorToast(error?.response?.data?.message);
     return;
   } else {

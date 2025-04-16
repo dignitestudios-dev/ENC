@@ -43,7 +43,7 @@ export default function Step3({
           null,
           payload
         );
-        console.log(res, "rese");
+        // console.log(res, "rese");
         if (res.success) {
           const paymentSecret = await postData(
             `/appointments/create/${res?.data?._id}/pm_card_visa`,
@@ -51,7 +51,7 @@ export default function Step3({
             null,
             payload
           );
-          console.log(paymentSecret, "paymentScret");
+          // console.log(paymentSecret, "paymentScret");
           setClientSecret(paymentSecret?.data);
           setIsAppointment(false);
           setStep(1);

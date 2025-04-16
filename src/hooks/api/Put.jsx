@@ -16,7 +16,7 @@ const useSignup = () => {
       try {
         setLoading(true);
         const response = await axios.put(url, isFormData ? formdata : data);
-        console.log(response);      
+        // console.log(response);      
         SuccessToast(response?.data?.message)
         return response?.data;
       } catch (error) {

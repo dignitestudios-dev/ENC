@@ -5,7 +5,7 @@ import { FaSpinner } from "react-icons/fa6";
 
 export default function ApointmentsList() {
   const appointments = useAppointment("appointments", 1);
-  console.log(appointments, "appointments");
+  // console.log(appointments, "appointments");
 
   return (
     <div className="relative overflow-auto rounded-[8px] h-[400px] max-h-[100%] bg-[#FFFFFF] px-3 py-3 shadow-[6px_6px_54px_0px_rgba(0,0,0,0.03)]">

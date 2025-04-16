@@ -65,7 +65,7 @@ const EditProfileModal = ({ isOpen, setIsOpen, setProfileUpdated, user }) => {
 
   const goToNextStep = () => setStep(2);
   const goToPreviousStep = () => setStep(1);
-  console.log(user);
+  // console.log(user);
 
   return (
     isOpen && (

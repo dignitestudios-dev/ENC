@@ -42,7 +42,7 @@ const PaymentForm = ({ clientSecret, setStep, step }) => {
       setErrorMessage(error.message);
       setIsProcessing(false);
     } else if (paymentIntent.status === "succeeded") {
-      console.log(paymentIntent,"intent")
+      // console.log(paymentIntent,"intent")
       step < 3 && setStep((prev) => prev + 1);
     }
   };

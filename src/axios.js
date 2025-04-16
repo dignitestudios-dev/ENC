@@ -39,7 +39,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use((request) => {
   const token = Cookies.get("token");
-  console.log(token,"token");
   
   if (!navigator.onLine) {
     ErrorToast(

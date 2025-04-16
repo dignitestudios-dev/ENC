@@ -25,7 +25,7 @@ export default function ContactUs() {
         };
         const res = await postData("landing/contact", false, null, payload);       
         if (res.success) {
-          console.log("Message sent successfully.");
+          // console.log("Message sent successfully.");
           actions.resetForm(); // ← Reset form here
         }
       },

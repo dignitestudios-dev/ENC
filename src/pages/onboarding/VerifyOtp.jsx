@@ -60,7 +60,7 @@ const VerifyOtp = () => {
     }
   };
   const isOtpComplete = otp.join("").length < 5;
-  console.log(isOtpComplete, otp);
+  // console.log(isOtpComplete, otp);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,7 +68,7 @@ const VerifyOtp = () => {
     const data = { otp: otpValue };
     const response = await verifyOtpPostData("/auth/verifyEmail", data);
     if (response?.success) {
-      console.log(response);
+      // console.log(response);
       SuccessToast(response?.message);
       navigate("/help-us");
     } else {

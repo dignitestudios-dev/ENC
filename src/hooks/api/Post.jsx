@@ -46,9 +46,9 @@ const useSignup = () => {
       setLoading(true);
 
       const response = await axios.post(url, isFormData ? formdata : data);
-      console.log(response);      
+      // console.log(response);      
       if (typeof callback === "function") {
-        console.log(response?.data, "urls");
+        // console.log(response?.data, "urls");
         callback(response?.data, navigate);
       }
       return response?.data;
@@ -137,7 +137,7 @@ const useResetVerification = () => {
       setLoading(true);
 
       const response = await axios.post(url, data);
-      console.log(response, "response");
+      // console.log(response, "response");
 
       Cookies.set("token", response?.data?.data?.token, { expires: 7 });
       return response?.data;
@@ -166,7 +166,7 @@ const useResetPassword = () => {
       SuccessToast(response?.data?.message);
       return response?.data;
     } catch (error) {
-      console.log(error, "error");
+      // console.log(error, "error");
      ErrorToast(error?.response?.data?.message);
     } finally {
       setLoading(false);

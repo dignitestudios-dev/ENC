@@ -16,7 +16,7 @@ const Navber = () => {
   const token = Cookies.get("token");
   let user = Cookies.get("admin");
   user=JSON.parse(user); 
-  console.log();
+  // console.log();
   
   const navigate = useNavigate("");
 
