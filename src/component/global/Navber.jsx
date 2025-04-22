@@ -15,9 +15,14 @@ const Navber = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const token = Cookies.get("token");
   let user = Cookies.get("admin");
-  user=JSON.parse(user); 
-  // console.log();
-  
+
+  try {
+    user = user ? JSON.parse(user) : null;
+  } catch (e) {
+    user = null;
+    console.error("Failed to parse user cookie:", e);
+  }
+
   const navigate = useNavigate("");
 
   const handlenav = () => {
@@ -65,17 +70,21 @@ const Navber = () => {
               onClick={() => setIsProfile(!profile)}
               className="cursor-pointer"
             >
-              <img src={user?.profilePicture?user?.profilePicture:"/dr.jpg"} alt="" className="w-10 h-10 rounded-full" />
+              <img
+                src={user?.profilePicture ? user?.profilePicture : "/dr.jpg"}
+                alt=""
+                className="w-10 h-10 rounded-full"
+              />
             </div>
           )}
 
-          {profile && (
+          {profile && token && (
             <div className="bg-[#FFFFFF] shadow-lg  px-3 py-5 w-[206px] rounded-[13px] z-40 absolute top-24 right-14">
               <ul>
                 <li className="border-b-[1px] border-[#0000001A] py-2 ">
                   <NavLink
                     to={"/profile"}
-                    state={{user}}
+                    state={{ user }}
                     className={"text-black font-[400] text-[16px]"}
                   >
                     View Profile
@@ -89,11 +98,11 @@ const Navber = () => {
                     Settings
                   </NavLink>
                 </li>
+                
                 <li className="border-[#0000001A] pt-2">
                   <NavLink
                     to={""}
                     onClick={() => {
-                  
                       setIsLogout(!logout);
                     }}
                     className={"text-black font-[400] text-[16px]"}
