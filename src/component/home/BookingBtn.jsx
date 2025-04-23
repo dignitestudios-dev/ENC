@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import Cookies from "js-cookie";
+import BookAppointmentModal from "../apointments/BookAppointmentModal";
+import PaymentMethodModal from "../apointments/PaymentMethod";
 const BookingBtn = () => {
+  const [isAppointment, setIsAppointment] = useState(false);
+  const [isPaymentMethod, setIsPaymentMethod] = useState(false);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [ClientSecret, setClientSecret] = useState({});
+  const token = Cookies.get("token");
   return (
     <div className="">
       {/* <div className="w-full h-[30vh] lg:h-[20vh] bg-white"></div> */}
@@ -12,12 +19,31 @@ const BookingBtn = () => {
           appointment and experience the <br /> transformative power of
           one-on-one support.
         </p>
-        <NavLink to={"/contact"}>
-          <button className="w-72 all-colors text-white hover:bg-white  font-medium text-2xl rounded-lg py-3">
-            Book An Appointment
+        {token && (
+          <button
+            onClick={() => {
+              setIsAppointment(true);
+            }}
+            className="bg-[#000000] font-[500] text-white h-[44px] py-3 px-3 rounded-[4px] text-[16px]"
+          >
+            Book an Appointment
           </button>
-        </NavLink>
+        )}
       </div>
+      <BookAppointmentModal
+        isAppointment={isAppointment}
+        setIsAppointment={setIsAppointment}
+        setIsPaymentMethod={setIsPaymentMethod}
+        selectedTime={selectedTime}
+        setSelectedTime={setSelectedTime}
+        setClientSecret={setClientSecret}
+      />
+      <PaymentMethodModal
+        selectedTime={selectedTime}
+        isPaymentMethod={isPaymentMethod}
+        setIsPaymentMethod={setIsPaymentMethod}
+        ClientSecret={ClientSecret}
+      />
     </div>
   );
 };
