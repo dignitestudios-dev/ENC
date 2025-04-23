@@ -15,6 +15,7 @@ const Navber = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const token = Cookies.get("token");
   let user = Cookies.get("admin");
+  let userName = Cookies.get("data");
 
   try {
     user = user ? JSON.parse(user) : null;
@@ -98,7 +99,7 @@ const Navber = () => {
                     Settings
                   </NavLink>
                 </li>
-                
+
                 <li className="border-[#0000001A] pt-2">
                   <NavLink
                     to={""}
@@ -140,7 +141,7 @@ const Navber = () => {
               </button>
             </div>
 
-            <div className="w-full flex flex-col items-start pt-10">
+            <div className="w-full relative flex flex-col items-start pt-10">
               <Link
                 to={"/"}
                 className={`text-size border-b w-full py-4 font-medium`}
@@ -154,11 +155,68 @@ const Navber = () => {
                 About Us
               </Link>
               <Link
+                to={"/appointment"}
+                className={`text-size    border-b w-full py-4 font-medium`}
+              >
+                My Appointments
+              </Link>
+              <Link
                 to={"/contact"}
                 className={`text-size  border-b w-full py-4 font-medium`}
               >
                 Contact
               </Link>
+              {token && (
+                <div
+                  onClick={() => setIsProfile(!profile)}
+                  className="flex items-center gap-2 cursor-pointer mt-8"
+                >
+                  <img
+                    src={
+                      user?.profilePicture ? user?.profilePicture : "/dr.jpg"
+                    }
+                    alt=""
+                    className="w-10 h-10 rounded-full"
+                  />
+                  <p>{userName}</p>
+                </div>
+              )}
+
+              {profile && token && (
+                <div className="bg-[#FFFFFF] shadow-lg  px-3 py-5 w-[206px] rounded-[13px] z-40 absolute -bottom-[170px] left-0">
+                  <ul>
+                    <li className="border-b-[1px] border-[#0000001A] py-2 ">
+                      <NavLink
+                        to={"/profile"}
+                        state={{ user }}
+                        className={"text-black font-[400] text-[16px]"}
+                      >
+                        View Profile
+                      </NavLink>
+                    </li>
+                    <li className="border-b-[1px] border-[#0000001A] py-2 ">
+                      <NavLink
+                        to={"/setting"}
+                        className={"text-black font-[400] text-[16px]"}
+                      >
+                        Settings
+                      </NavLink>
+                    </li>
+
+                    <li className="border-[#0000001A] pt-2">
+                      <NavLink
+                        to={""}
+                        onClick={() => {
+                          setIsLogout(!logout);
+                        }}
+                        className={"text-black font-[400] text-[16px]"}
+                      >
+                        Logout
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>

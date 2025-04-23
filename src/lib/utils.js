@@ -14,6 +14,8 @@ export const processSignup = (data, navigate) => {
 
 export const processLogin = (data, navigate) => {
   if (data?.success) {
+    console.log(data,"userData")
+    Cookies.set("data",data?.data?.user?.name, { expires: 7 });
     Cookies.set("token", data?.data?.token, { expires: 7 });
     navigate("/");
     return;
