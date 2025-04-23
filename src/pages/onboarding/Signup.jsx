@@ -7,6 +7,7 @@ import { useSignup } from "../../hooks/api/Post";
 import { signUpValues } from "../../init/authentication/AuthValues";
 import { signUpSchema } from "../../schema/authentication/AuthSchema";
 import { processSignup } from "../../lib/utils";
+import { useState } from "react";
 
 const SignUp = () => {
   const navigate = useNavigate();
