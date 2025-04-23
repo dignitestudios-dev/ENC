@@ -48,8 +48,7 @@ export default function Step3({
           const paymentSecret = await postData(
             `/appointments/create/${res?.data?._id}/pm_card_visa`,
             false,
-            null,
-            payload
+            null,            
           );
           // console.log(paymentSecret, "paymentScret");
           setClientSecret(paymentSecret?.data);
