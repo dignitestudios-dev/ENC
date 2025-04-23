@@ -4,14 +4,13 @@ import { ErrorToast } from "./component/global/Toaster";
 import { UAParser } from "ua-parser-js";
 import { v4 as uuidv4 } from "uuid";
 // import FingerprintJS from "@fingerprintjs/fingerprintjs";
-export const baseUrl = "http://3.17.215.238/"; // Add the protocol (http:// or https://)
+export const baseUrl = "https://backend.empowermentnetworkcircle.com/"; // Add the protocol (http:// or https://)
 
 const getDeviceName = () => {
   const parser = new UAParser();
   const result = parser.getResult();
   const deviceName = result.device.model || "Unknown";
   const deviceID = result.ua || "Unknown"; // User-Agent can serve as a unique identifier
-
   return deviceName;
 };
 
