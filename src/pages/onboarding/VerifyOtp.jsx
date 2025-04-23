@@ -70,7 +70,7 @@ const VerifyOtp = () => {
     if (response?.success) {
       // console.log(response);
       SuccessToast(response?.message);
-      navigate("/help-us");
+      navigate("/login");
     } else {
       console.error("OTP verification failed", response?.message);
     }
