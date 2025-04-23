@@ -30,7 +30,7 @@ export default function HelpUsComponent() {
               payload
             );
             if (res.success) {
-              navigate("/login");
+              navigate("/verify-otp");
             }
            
           },
