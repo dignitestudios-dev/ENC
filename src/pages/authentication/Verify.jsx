@@ -100,7 +100,7 @@ export default function Verify() {
                 value={item}
                 onChange={(e) => handleChange(e, index)}
                 name="otp"
-                className="flex-1 min-w-[50px] max-w-[66px] h-[60px] rounded-xl bg-transparent outline-none text-center border border-[#c2c6cb] text-3xl focus:bg-[#D0FCB333] focus-within:border-[#55C9FA]"
+                className="flex-1 min-w-[50px] max-w-[66px] h-[60px] rounded-xl bg-transparent outline-none text-center border border-[#c2c6cb] text-3xl focus:bg-[#D0FCB333] focus-within:border-[#3C043A]"
                 maxLength={1}
                 ref={(el) => (otpRefs.current[index] = el)} // Set ref for each input
               />

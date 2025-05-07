@@ -16,7 +16,7 @@ export default function ApointmentsList() {
         </div>
       ) : (
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs uppercase bg-gray-100">
+          <thead className="text-xs uppercase bg-[#A82E751F]">
             <tr>
               <th
                 scope="col"
@@ -57,9 +57,17 @@ export default function ApointmentsList() {
             </tr>
           </thead>
           <tbody>
-            {appointments?.data?.map((item, i) => (
-              <AppointmentListItem key={i} index={i} item={item} />
-            ))}
+            {appointments?.data?.length > 0 ? (
+              appointments?.data.map((item, i) => (
+                <AppointmentListItem key={i} index={i} item={item} />
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6" className="px-6 py-3 text-center text-gray-500">
+                  No records found
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       )}

@@ -21,7 +21,7 @@ const ForgotPassword = () => {
       onSubmit: async (values, action) => {
         const data = {
           email: values?.email,
-          role:"user"
+          role: "user",
         };
         postData("auth/forgot", false, null, data, "");
       },
@@ -44,7 +44,7 @@ const ForgotPassword = () => {
                   navigate(-1);
                 }}
               >
-                <IoMdArrowBack size={30} />
+                <IoMdArrowBack size={25} className="text-[#A82E75]" />
               </div>
               <div className="w-full text-start mt-10">
                 <h1 className=" text-4xl font-bold text-black">

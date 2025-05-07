@@ -51,6 +51,7 @@ const EditProfileModal = ({ isOpen, setIsOpen, setProfileUpdated, user }) => {
       if (updateProfileResponse?.success) {
         setIsOpen(false);
         setProfileUpdated(true);
+        setStep(1)
       }
     },
   });
@@ -314,7 +315,7 @@ const EditProfileModal = ({ isOpen, setIsOpen, setProfileUpdated, user }) => {
                     ← Back
                   </button>
                 )}
-                <div className="ml-auto w-[30%]">
+                <div className="ml-auto w-[50%]">
                   {step === 1 ? (
                     <AuthSubmitBtn text={"Next"} loading={false} />
                   ) : (

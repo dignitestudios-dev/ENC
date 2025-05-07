@@ -29,13 +29,13 @@ const Hero = () => {
               <>
                 <button
                   onClick={() => navigate("/signup")}
-                  className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
+                  className="bg-gradient-to-l from-[#A82E75] to-[#3C043A] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
                 >
                   Sign up
                 </button>
                 <button
                   onClick={() => navigate("/login")}
-                  className="bg-[#000000] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
+                  className="bg-gradient-to-l from-[#A82E75] to-[#3C043A] font-[500] h-[44px] w-[120px] rounded-[4px] text-[16px]"
                 >
                   Login
                 </button>
@@ -45,7 +45,7 @@ const Hero = () => {
                 onClick={() => {
                   setIsAppointment(true);
                 }}
-                className="bg-[#000000] font-[500] h-[44px] py-3 px-3 rounded-[4px] text-[16px]"
+                className="bg-gradient-to-l from-[#A82E75] to-[#3C043A] font-[500] h-[44px] py-3 px-3 rounded-[4px] text-[16px]"
               >
                 Book an Appointment
               </button>

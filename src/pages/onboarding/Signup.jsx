@@ -60,7 +60,7 @@ const SignUp = () => {
         >
           <div className="flex w-full items-center ">
             <div onClick={() => navigate(-1)} className="cursor-pointer">
-              <IoMdArrowBack size={25} />
+                <IoMdArrowBack size={25} className="text-[#A82E75]" />
             </div>
             <div className="w-full text-center">
               <h1 className=" text-4xl font-bold text-black capitalize">
@@ -83,7 +83,7 @@ const SignUp = () => {
                   className="w-[80px]"
                 />
 
-                <p className="w-full text-[#181818] font-medium underline text-[14px] leading-[100%]">
+                <p className="w-full text-[#3C043A] ml-2 font-medium underline text-[14px] leading-[100%]">
                   Upload Profile Picture
                 </p>
               </label>
@@ -143,7 +143,7 @@ const SignUp = () => {
             <AuthSubmitBtn text={"Sign Up"} loading={loading} />
             <p className="text-center w-full mt-3 font-[400] text-[#565656] text-[12px]">
               Already have an account?{" "}
-              <span className="font-[600] text-black">Log In </span>
+              <span className="font-[600] text-black cursor-pointer" onClick={()=>navigate("/login")}  >Log In </span>
             </p>
             <p className="font-[400] text-center mt-5 text-[#565656] text-[12px]">
               I accept the Terms & conditions and Privacy policy

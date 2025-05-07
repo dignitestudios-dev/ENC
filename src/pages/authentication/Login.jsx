@@ -10,7 +10,7 @@ import { signInSchema } from "../../schema/authentication/AuthSchema";
 import { useLogin } from "../../hooks/api/Post";
 const Login = () => {
   const { loading, postData } = useLogin();
-  const navigate=useNavigate("");
+  const navigate = useNavigate("");
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
     useFormik({
       initialValues: loginValues,
@@ -21,32 +21,32 @@ const Login = () => {
         const data = {
           email: values?.email,
           password: values?.password,
-          role:"user"
-        };      
+          role: "user",
+        };
         postData("auth/signIn", false, null, data, processLogin);
       },
     });
 
-
   return (
     <div className="flex w-full h-screen overflow-hidden">
-      <div className="w-full flex flex-col justify-center  h-full items-center " >
+      <div className="w-full flex flex-col justify-center  h-full items-center ">
         <form
-          onSubmit={(e) =>{
+          onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit(e)
+            handleSubmit(e);
           }}
           className="bg-white w-full px-10 lg:px-0 lg:w-[400px] flex flex-col justify-start items-center gap-8"
         >
           <div className="flex w-full items-center ">
-            <div  onClick={()=>navigate(-1)} className="cursor-pointer" >
-              <IoMdArrowBack size={25} />
-            </div>
             <div className="w-full text-center">
-              <h1 className=" text-4xl font-bold text-black ">
-                Log in
-              </h1>
-              <span className="text-[14px] text-[#868686]  -mt-3">
+              <div className="flex items-center">
+                <div onClick={() => navigate(-1)} className="cursor-pointer">
+                  <IoMdArrowBack size={25} className="text-[#A82E75]" />
+                </div>
+                <h1 className=" text-4xl font-bold mx-auto text-black ">Log in</h1>
+              </div>
+              <br />
+              <span className="text-[14px] text-[#868686]  ">
                 Please enter your details to log in.
               </span>
             </div>
@@ -91,8 +91,17 @@ const Login = () => {
           </div> */}
           </div>
           <div className=" gap-4 w-full">
-            <AuthSubmitBtn text={"Log In"} loading={loading}  />
-          <p className="text-center w-full mt-3 font-[400] text-[#565656] text-[12px]" >Don’t have an account? <span className="font-[600] text-black cursor-pointer " onClick={()=>navigate("/signup")}  > Sign Up </span></p>
+            <AuthSubmitBtn text={"Log In"} loading={loading} />
+            <p className="text-center w-full mt-3 font-[400] text-[#565656] text-[12px]">
+              Don’t have an account?{" "}
+              <span
+                className="font-[600] text-black cursor-pointer "
+                onClick={() => navigate("/signup")}
+              >
+                {" "}
+                Sign Up{" "}
+              </span>
+            </p>
           </div>
         </form>
       </div>

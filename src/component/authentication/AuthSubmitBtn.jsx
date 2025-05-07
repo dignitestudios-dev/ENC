@@ -7,7 +7,7 @@ const AuthSubmitBtn = ({ text, loading ,dissabled}) => {
       <button
         type="submit"
         disabled={dissabled}
-        className="bg-[#000000] flex items-center gap-2 justify-center  text-white font-[500] h-[44px] w-full rounded-[4px] text-[16px]"
+        className="bg-gradient-to-r from-[#A82E75] to-[#3C043A] flex items-center gap-2 justify-center  text-white font-[500] h-[44px] w-full rounded-[4px] text-[16px]"
       >
         {text} {loading && <PiSpinnerBold className="animate-spin"  />}
       </button>

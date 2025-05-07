@@ -9,6 +9,7 @@ import { ChangedValues } from "../../init/authentication/AuthValues";
 import { ChangedSchema } from "../../schema/authentication/AuthSchema";
 import { useResetPassword } from "../../hooks/api/Post";
 import { processError } from "../../lib/utils";
+import { IoMdArrowBack } from "react-icons/io";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -20,9 +21,9 @@ const ResetPassword = () => {
       validationSchema: ChangedSchema,
       validateOnChange: true,
       validateOnBlur: true,
-      onSubmit: async (values, action) => {   
+      onSubmit: async (values, action) => {
         const data = {
-          password: values?.password
+          password: values?.password,
         };
 
         try {
@@ -34,7 +35,7 @@ const ResetPassword = () => {
             ""
           );
           if (res?.success) {
-            setPasswordUpdate(true); 
+            setPasswordUpdate(true);
           } else {
             processError("Failed to update password. Please try again.");
           }
@@ -56,11 +57,11 @@ const ResetPassword = () => {
       >
         <div className="lg:w-[450px]">
           <button
-          onClick={()=>navigate(-1)}
+            onClick={() => navigate(-1)}
             type="button"
             className="w-full flex justify-start items-start flex-col"
           >
-            <BiArrowBack className="text-3xl text-black" />
+            <IoMdArrowBack size={25} className="text-[#A82E75]" />
           </button>
 
           <div className="w-full flex justify-center mb-10 items-center flex-col">

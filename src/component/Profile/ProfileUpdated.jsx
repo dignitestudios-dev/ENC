@@ -16,7 +16,7 @@ const ProfileUpdatedModal = ({ profileUpdate, setProfileUpdate }) => {
           </button>
 
           <div className="flex justify-center items-center mb-4">
-            <div  className="rounded-full bg-[#181818] cursor-pointer p-4 flex items-center justify-center">
+            <div  className="rounded-full bg-gradient-to-r from-[#A82E75] to-[#3C043A] cursor-pointer p-4 flex items-center justify-center">
               <FaCheck className="text-white   text-4xl" />
             </div>
           </div>

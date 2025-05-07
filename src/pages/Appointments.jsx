@@ -12,7 +12,7 @@ export default function Appointments() {
           <h3 className="font-[600] text-[32px]">My Appointments</h3>
         </div>        
       </div>
-      <div className="bg-[#E3E3E3] h-[500px] px-5 py-5 mt-5">
+      <div className="bg-[#A82E751F] h-[500px] px-5 py-5 mt-5">
         <ApointmentsList />
       </div>
     </div>

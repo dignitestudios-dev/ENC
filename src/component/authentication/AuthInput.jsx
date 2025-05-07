@@ -13,7 +13,7 @@ export default function AuthInput({
   error,
   touched,
   forgetPassword,
-  dissabled
+  dissabled,
 }) {
   const [isPassVisible, setIsPassVisible] = useState(false);
 
@@ -26,14 +26,14 @@ export default function AuthInput({
         {forgetPassword && (
           <NavLink
             to={"/forgot-password"}
-            className={"text-[12px] font-[400] text-[#0084FF]"}
+            className={"text-[12px] font-[400] text-[#3C043A]"}
           >
             Forgot Password?
           </NavLink>
         )}
       </div>
       <div
-        className={` h-[49px] flex justify-start bg-[#F8F8F899] items-start w-full relative border-[0.8px]  border-[#D9D9D9] rounded-[8px] ${
+        className={`h-[49px] flex justify-start bg-[#F8F8F899] items-start w-full relative border-[0.8px] rounded-[8px] focus-within:border-[#3C043A] ${
           error && touched ? "border-red-500" : "border-[#D9D9D9]"
         }`}
       >
@@ -48,11 +48,12 @@ export default function AuthInput({
             onChange={handleChange}
             disabled={dissabled}
             onBlur={handleBlur}
-            className={`w-full h-[49px]  bg-transparent  outline-none border-0 rounded-[8px]  text-[#262626] px-3 text-[16px] font-normal leading-[20.4px] ${
-              error && touched ? "border-red-500" : "border-[#D9D9D9]"
+            className={`w-full h-[49px] bg-transparent outline-none border-0 focus-within:border-[#3C043A] rounded-[8px] text-[#262626] px-3 text-[16px] font-normal leading-[20.4px] ${
+              error && touched ? "border-red-500" : ""
             } `}
             placeholder={holder}
           />
+
           <button
             type="button"
             onClick={() => setIsPassVisible((prev) => !prev)}

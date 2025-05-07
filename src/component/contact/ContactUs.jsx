@@ -32,7 +32,7 @@ export default function ContactUs() {
     });
 
   return (
-    <div className="bg-[#AFAFAF] relative flex gap-5 px-10 mt-40 py-10 h-[450px] ">
+    <div className="bg-gradient-to-r from-[#A82E75] to-[#3C043A] relative flex gap-5 px-10 mt-40 py-10 h-[450px] ">
       <div className="flex flex-col w-full justify-between h-full">
         <div>
           <h3 className="font-[500] text-[32px] text-white">
