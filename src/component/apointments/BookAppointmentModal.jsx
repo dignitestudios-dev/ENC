@@ -27,7 +27,7 @@ export default function BookAppointmentModal({
             {/* {/ Close Button /} */}
             <div className="flex border-b-[1px] items-center justify-between">
               <div>
-                <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-800">
+                <h2 className="text-lg md:text-xl font-semibold mb-2 text-[#A82E75]">
                   Book Appointment
                 </h2>
               </div>
@@ -52,28 +52,30 @@ export default function BookAppointmentModal({
               {/* {/ Calendar Section /} */}
               {step != 3 && (
                 <div className="border-r-[1px] px-5">
-                  <p className="text-[#1A1A1A99] text-[18px] font-[500] mb-4  mt-4">
+                  <p className="text-[#49274A] text-[18px] font-[300] mb-4  mt-4">
                     Welcome to my scheduling page. Please follow the
                     instructions to add an event to my calendar.
                   </p>
 
                   {/* {/ Doctor Information /} */}
                   <div className="flex flex-col justify-center  gap-2 mt-20">
-                    <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    <div className="w-12 h-12 bg-gray-300 rounded-full">
+                      <img src="/rose-handon.png" alt="rose-handon" className="w-full h-full rounded-full" />
+                    </div>
                     <div>
                       <p className="text-[15px] font-[700] text-[#1A1A1A99]   ">
                         Rose Handon
                       </p>
-                      <h3 className="text-[27px] font-[700] text-[#1A1A1A]">
+                      <h3 className="text-[27px] font-[700] text-[#A82E75]">
                         Dr Rose Handon
                       </h3>
                       <ul className="mt-2 flex flex-col gap-2">
-                        <li className="flex items-center gap-2 text-[#1A1A1A99] font-[700] text-[16px]">
-                          <FaRegClock /> 1hr{" "}
+                        <li className="flex items-center gap-2 text-[#3C043A] font-[700] text-[16px]">
+                          <FaRegClock color="#A82E75" /> 1hr{" "}
                         </li>
                         {selectedTime && step > 1 && (
-                          <li className="flex items-center gap-2 text-[#1A1A1A99] font-[700] text-[16px]">
-                            <CiCalendar />{" "}
+                          <li className="flex items-center gap-2 text-[#3C043A] font-[700] text-[16px]">
+                            <CiCalendar color="#A82E75" />{" "}
                             {formatTimeRange(
                               selectedTime?.startTime,
                               selectedTime?.endTime

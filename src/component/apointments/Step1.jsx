@@ -51,7 +51,7 @@ export default function Step1({ selectedTime, setSelectedTime, setStep }) {
                   }
                   className={`p-2 font-[400] text-[14px] border rounded-lg ${
                     selectedTime?.startTime === time?.startTime
-                      ? "bg-black text-white"
+                      ? "bg-[#49274A0D] text-[#3C043A] border-[#A82E75]"
                       : "border-[#EAEAEA]"
                   }`}
                 >
@@ -77,7 +77,7 @@ export default function Step1({ selectedTime, setSelectedTime, setStep }) {
           className={`w-full px-6 py-2 rounded-lg ${
             !startDate || !selectedTime
               ? "bg-gray-400 text-white cursor-not-allowed" // Disabled styles
-              : "bg-black text-white hover:bg-gray-800" // Enabled styles
+              : "bg-gradient-to-r from-[#A82E75] to-[#3C043A] text-white hover:bg-[#af3f80]" // Enabled styles
           }`}
         >
           Next

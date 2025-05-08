@@ -79,7 +79,7 @@ const PaymentForm = ({ clientSecret, setStep, step }) => {
       <button
         type="submit"
         disabled={!stripe || isProcessing}
-        className="w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors font-medium mt-4"
+        className="w-full bg-gradient-to-r from-[#A82E75] to-[#3C043A] text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors font-medium mt-4"
       >
         {isProcessing ? "Processing..." : "Next"}
       </button>

@@ -21,6 +21,7 @@ export default function PaymentMethodModal({
 }) {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPdf, setIsPdf] = useState(false);
   const stripePromise = loadStripe(import.meta.env.VITE_APP_STRIPE_KEY);
   const { loading, ValidAppointment } = useValidateAppointment();
 
@@ -42,6 +43,7 @@ export default function PaymentMethodModal({
       // Wait for custom fonts to load before capturing
       await document.fonts.ready;
 
+      setIsPdf(true)
       const canvas = await html2canvas(pdfRef.current, {
         scale: 3, // higher scale = better quality
         useCORS: true,
@@ -56,11 +58,12 @@ export default function PaymentMethodModal({
       const contentHeight = (canvas.height * contentWidth) / canvas.width;
       pdf.addImage(imgData, "PNG", 15, 15, contentWidth, contentHeight);
       pdf.save("Booking.pdf");
-      setStep(1);
-      setIsPaymentMethod(!isPaymentMethod);
+      // setStep(1);
+      // setIsPaymentMethod(!isPaymentMethod);
     } catch (err) {
       console.error("Failed to generate PDF:", err);
     } finally {
+      setIsPdf(false)
       setIsLoading(false);
     }
   };
@@ -173,7 +176,7 @@ export default function PaymentMethodModal({
                       step < 3 && setStep((prev) => prev + 1);
                     }
                   }}
-                  className="bg-[#000000]  flex items-center justify-center gap-2  text-white font-[500] h-[44px] w-full rounded-[4px] text-[16px]"
+                  className="bg-gradient-to-r from-[#A82E75] to-[#3C043A]  flex items-center justify-center gap-2  text-white font-[500] h-[44px] w-full rounded-[4px] text-[16px]"
                 >
                   Book Now{" "}
                   {loading && <PiSpinnerBold className="animate-spin" />}
@@ -201,15 +204,15 @@ export default function PaymentMethodModal({
                     {step === 3 ? "You are scheduled" : "Payment Method"}
                   </h3>
 
-                  <div className="border border-[#0000001A] mb-4 mt-6 rounded-[8px] py-4 px-4">
-                    <h3 className="font-[700] text-[18px]">Booking Detail</h3>
+                  <div className="border border-[#A82E75] mb-4 mt-6 rounded-[8px] py-4 px-4">
+                    <h3 className="font-[700] text-[#3C043A] text-[18px]">Booking Detail</h3>
                     <ul className="mt-2 flex flex-col justify-center w-full">
-                      <li className="flex items-center gap-3 text-[#1A1A1A99] font-[700] text-[16px] ">
+                      <li className="flex items-center gap-3 text-[#3C043A] font-[700] text-[16px] ">
                         {/* <FaRegClock /> */}
                         <img
                           src="/time.png"
                           alt=""
-                          className={`w-4 ${isLoading ? "mt-4" : ""}`}
+                          className={`w-4 ${isPdf ? "mt-4" : ""}`}
                         />
 
                         <span>
@@ -220,24 +223,24 @@ export default function PaymentMethodModal({
                         </span>
                       </li>
 
-                      <li className="flex items-center gap-3 text-[#1A1A1A99] font-[700] text-[16px] ">
+                      <li className="flex items-center gap-3 text-[#3C043A] font-[700] text-[16px] ">
                         {/* <CiCalendar /> */}
                         <img
                           src="/calendar.png"
                           alt=""
-                          className={`w-4 ${isLoading ? "mt-4" : ""}`}
+                          className={`w-4 ${isPdf ? "mt-4" : ""}`}
                         />
                         <span>
                           {new Date(selectedTime?.date).toDateString()}
                         </span>
                       </li>
 
-                      <li className="flex items-center gap-3 text-[#1A1A1A99] font-[700] text-[16px] ">
+                      <li className="flex items-center gap-3 text-[#3C043A] font-[700] text-[16px] ">
                         {/* <CiCreditCard1 /> */}
                         <img
                           src="/card-tick.png"
                           alt=""
-                          className={`w-4 ${isLoading ? "mt-4" : ""}`}
+                          className={`w-4 ${isPdf ? "mt-4" : ""}`}
                         />
 
                         <span className="font-mono">$300 USD</span>
@@ -249,7 +252,7 @@ export default function PaymentMethodModal({
                 <button
                   onClick={downloadPDF}
                   type="button"
-                  className="bg-[#000000] flex items-center justify-center text-white font-[500] h-[44px] w-full rounded-[4px] text-[16px]"
+                  className="bg-gradient-to-r from-[#A82E75] to-[#3C043A] flex items-center justify-center text-white font-[500] h-[44px] w-full rounded-[4px] text-[16px]"
                 >
                   Download PDF{" "}
                   {isLoading && <PiSpinnerBold className="animate-spin ml-2" />}

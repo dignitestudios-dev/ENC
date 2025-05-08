@@ -88,7 +88,7 @@ export default function Step2({ setStep, setPersonalDetail }) {
         <div className="mt-6 w-full">
           <button
           type="submit"
-            className="bg-black w-full text-white px-6 py-2 rounded-lg hover:bg-gray-800"
+            className="bg-gradient-to-r from-[#A82E75] to-[#3C043A] w-full text-white px-6 py-2 rounded-lg hover:bg-gray-800"
           >
             Next
           </button>
