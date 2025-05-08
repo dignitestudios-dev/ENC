@@ -58,8 +58,8 @@ export default function PaymentMethodModal({
       const contentHeight = (canvas.height * contentWidth) / canvas.width;
       pdf.addImage(imgData, "PNG", 15, 15, contentWidth, contentHeight);
       pdf.save("Booking.pdf");
-      // setStep(1);
-      // setIsPaymentMethod(!isPaymentMethod);
+      setStep(1);
+      setIsPaymentMethod(!isPaymentMethod);
     } catch (err) {
       console.error("Failed to generate PDF:", err);
     } finally {
