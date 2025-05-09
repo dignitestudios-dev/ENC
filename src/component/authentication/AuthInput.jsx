@@ -53,7 +53,6 @@ export default function AuthInput({
             } `}
             placeholder={holder}
           />
-
           <button
             type="button"
             onClick={() => setIsPassVisible((prev) => !prev)}

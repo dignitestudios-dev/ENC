@@ -42,9 +42,11 @@ const Navber = () => {
           <NavLink to={"/"} className="text-base font-medium ">
             Home{" "}
           </NavLink>
-          <NavLink to={"/appointment"} className="text-base font-medium ">
-            My Appointments
-          </NavLink>
+          {token && (
+            <NavLink to={"/appointment"} className="text-base font-medium ">
+              My Appointments
+            </NavLink>
+          )}
           <NavLink to={"/about"} className="text-base font-medium">
             About
           </NavLink>
@@ -85,6 +87,7 @@ const Navber = () => {
                 <li className="border-b-[1px] border-[#0000001A] py-2 ">
                   <NavLink
                     to={"/profile"}
+                    onClick={() => setIsProfile(false)}
                     state={{ user }}
                     className={"text-black font-[400] text-[16px]"}
                   >
@@ -94,6 +97,7 @@ const Navber = () => {
                 <li className="border-b-[1px] border-[#0000001A] py-2 ">
                   <NavLink
                     to={"/setting"}
+                    onClick={() => setIsProfile(false)}
                     className={"text-black font-[400] text-[16px]"}
                   >
                     Settings
@@ -154,12 +158,15 @@ const Navber = () => {
               >
                 About Us
               </Link>
-              <Link
-                to={"/appointment"}
-                className={`text-size    border-b w-full py-4 font-medium`}
-              >
-                My Appointments
-              </Link>
+              {token && (
+                <Link
+                  to={"/appointment"}
+                  className={`text-size    border-b w-full py-4 font-medium`}
+                >
+                  My Appointments
+                </Link>
+              )}
+
               <Link
                 to={"/contact"}
                 className={`text-size  border-b w-full py-4 font-medium`}
@@ -181,7 +188,6 @@ const Navber = () => {
                   <p>{userName}</p>
                 </div>
               )}
-
               {profile && token && (
                 <div className="bg-[#FFFFFF] shadow-lg  px-3 py-5 w-[206px] rounded-[13px] z-40 absolute -bottom-[170px] left-0">
                   <ul>
@@ -189,6 +195,7 @@ const Navber = () => {
                       <NavLink
                         to={"/profile"}
                         state={{ user }}
+                        onClick={() => setIsProfile(false)}
                         className={"text-black font-[400] text-[16px]"}
                       >
                         View Profile
@@ -197,12 +204,12 @@ const Navber = () => {
                     <li className="border-b-[1px] border-[#0000001A] py-2 ">
                       <NavLink
                         to={"/setting"}
+                        onClick={() => setIsProfile(false)}
                         className={"text-black font-[400] text-[16px]"}
                       >
                         Settings
                       </NavLink>
                     </li>
-
                     <li className="border-[#0000001A] pt-2">
                       <NavLink
                         to={""}

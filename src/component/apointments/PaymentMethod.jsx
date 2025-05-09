@@ -40,12 +40,11 @@ export default function PaymentMethodModal({
     setIsLoading(true);
 
     try {
-      // Wait for custom fonts to load before capturing
       await document.fonts.ready;
 
       setIsPdf(true)
       const canvas = await html2canvas(pdfRef.current, {
-        scale: 3, // higher scale = better quality
+        scale: 3, 
         useCORS: true,
         backgroundColor: "#ffffff",
       });
@@ -54,7 +53,7 @@ export default function PaymentMethodModal({
 
       const pdf = new jsPDF("p", "mm", "a4");
       const pdfWidth = pdf.internal.pageSize.getWidth();
-      const contentWidth = pdfWidth - 30; // with some margin
+      const contentWidth = pdfWidth - 30; 
       const contentHeight = (canvas.height * contentWidth) / canvas.width;
       pdf.addImage(imgData, "PNG", 15, 15, contentWidth, contentHeight);
       pdf.save("Booking.pdf");

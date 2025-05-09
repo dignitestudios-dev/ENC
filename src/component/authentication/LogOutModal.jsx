@@ -30,7 +30,11 @@ const LogOutModal = ({ logOutModal, setLogOutModal }) => {
                 onClick={() => {
                   postData("auth/logout", null, null, null);
                   setLogOutModal(!logOutModal);
+                  Cookies.remove("token");
                   Cookies.remove("auth");
+                  localStorage.removeItem("email");
+                  localStorage.removeItem("token");
+                  localStorage.removeItem("user");
                   navigate("/login");
                 }}
                 className="w-[140px] h-[44px] rounded-[14px] bg-[#EE3131] text-white flex gap-2 items-center justify-center text-md font-medium"

@@ -6,6 +6,7 @@ import ChangedPasword from "../component/authentication/ChangedPassword";
 import PasswordUpdateModal from "../component/authentication/PasswordUpdateModal";
 import PrivacyPolicyModal from "../component/settings/PrivacyPolicyModal";
 import TermsConditionModal from "../component/settings/TermsConditionModal";
+import { useNavigate } from "react-router-dom";
 
 export default function Setting() {
   const [logout, setIsLogout] = useState(false);
@@ -13,9 +14,10 @@ export default function Setting() {
   const [PasswordUpdate, setPasswordUpdate] = useState(false);
   const [PrivacyModal, setPrivacyModal] = useState(false);
   const [TermCondtition, setTermCondtition] = useState(false);
+  const navigate=useNavigate("");
   return (
     <div className="px-24 py-20 h-screen ">
-      <div className="flex items-center gap-4">
+      <div onClick={()=>navigate(-1)} className="cursor-pointer flex items-center gap-4">
         <FaArrowLeft />
         <h3 className="font-[600] text-[32px]">Settings</h3>
       </div>

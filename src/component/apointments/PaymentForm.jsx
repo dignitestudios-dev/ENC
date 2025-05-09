@@ -26,7 +26,7 @@ const PaymentForm = ({ clientSecret, setStep, step }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!stripe || !elements) return; // Ensure Stripe and Elements are loaded
+    if (!stripe || !elements) return; 
     setIsProcessing(true);
     const card = elements.getElement(CardElement);
     const { error, paymentIntent } = await stripe.confirmCardPayment(
@@ -42,7 +42,6 @@ const PaymentForm = ({ clientSecret, setStep, step }) => {
       setErrorMessage(error.message);
       setIsProcessing(false);
     } else if (paymentIntent.status === "succeeded") {
-      // console.log(paymentIntent,"intent")
       step < 3 && setStep((prev) => prev + 1);
     }
   };

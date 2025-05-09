@@ -35,8 +35,7 @@ const useSlote = (url, currentPage = 1) => {
     try {
       setLoading(true);
       const { data } = await axios.get(`${url}?page=${currentPage}`);
-      // console.log(data,"timesdata");
-      
+     
       setData(data?.data);
       setPagination(data?.pagination);
     } catch (error) {
@@ -61,7 +60,7 @@ const useAppointment = (url, currentPage = 1) => {
     try {
       setLoading(true);
       const { data } = await axios.get(`${url}?page=${currentPage}`);
-      // console.log(data,"timesdata");
+  
       
       setData(data?.data);
       setPagination(data?.pagination);
@@ -71,7 +70,6 @@ const useAppointment = (url, currentPage = 1) => {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     getAppointments();
   }, [currentPage]);
