@@ -62,7 +62,7 @@ const Navber = () => {
                   navigate("/login");
                 }
               }}
-              className="bg-[#000000]  font-[500] h-[44px] py-3 px-3 rounded-[4px] text-[16px]"
+              className="bg-[#FFFFFF]  text-[#3C043A] font-[500] h-[44px] py-3 px-3 rounded-[12px] text-[16px]"
             >
               Book an Appointment
             </button>
