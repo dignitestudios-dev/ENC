@@ -52,7 +52,7 @@ const Hero = () => {
             )}
           </div>
         </div>
-        <div className="flex flex-cols  justify-center items-center absolute bottom-8 lg:bottom-1 px-2 lg:px-32 lg:gap-x-12 ">
+        <div className="flex flex-cols  justify-center items-center mt-4 px-2 lg:px-32 lg:gap-x-12 ">
           <img
             src="/istockphoto-1141509310-612x612.jpg"
             alt=""

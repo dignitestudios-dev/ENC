@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Imfor = () => {
   return (
-    <div className="text-white py-32">
+    <div className="text-white py-32 mt-10">
       <div className="w-full flex items-center justify-center">
         <h2 className="text-3xl lg:text-5xl font-bold text-center lg:leading-[50px]">
           Learn More About Empowerment <br /> Network Circle

@@ -23,7 +23,7 @@ export default function BookAppointmentModal({
     isAppointment && (
       <div className="w-screen h-screen flex items-center justify-center bg-[rgba(0,0,0,0.4)] fixed top-0 left-0 right-0 bottom-0 z-30 px-4">
         <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50 px-4">
-          <div className="bg-white p-6 md:p-5 rounded-lg shadow-lg max-w-4xl w-full mx-4 relative">
+          <div className="bg-white overflow-auto h-[600px] md:h-auto p-6 md:p-5 rounded-lg shadow-lg max-w-4xl w-full mx-4 relative">
             {/* {/ Close Button /} */}
             <div className="flex border-b-[1px] items-center justify-between">
               <div>
@@ -58,7 +58,7 @@ export default function BookAppointmentModal({
                   </p>
 
                   {/* {/ Doctor Information /} */}
-                  <div className="flex flex-col justify-center  gap-2 mt-20">
+                  <div className="flex flex-col justify-center  gap-2 md:mt-20">
                     <div className="w-12 h-12 bg-gray-300 rounded-full">
                       <img src="/rose-handon.png" alt="rose-handon" className="w-full h-full rounded-full" />
                     </div>

@@ -19,7 +19,7 @@ export default function AppointmentListItem({ item, index }) {
                   ? item?.user?.profilePicture
                   : "/dr.jpg"
               }
-              className="w-8 h-8 rounded-full"
+              className="md:w-8 md:h-8 rounded-full"
               alt="dr.jpg"
             />
           </div>

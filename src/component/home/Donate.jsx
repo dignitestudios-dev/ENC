@@ -17,8 +17,8 @@ const Donate = () => {
               inclusive community.
             </p>
           </div>
-          <div className="flex items-center justify-center gap-3">
-            <h2 className="text-2xl font-bold bg-white text_color text-black px-6 py-[7px] rounded-lg">
+          <div className="flex items-center justify-center flex-wrap gap-3">
+            <h2 className="text-2xl font-bold text-nowrap bg-white text_color text-black px-6 py-[7px] rounded-lg">
               PayPal :
             </h2>
             <NavLink
@@ -27,7 +27,7 @@ const Donate = () => {
                 "https://www.helpguide.org/wellness/health-conditions/living-well-with-a-disability"
               }
             >
-              <button className="w-full px-6 text_color bg-white text-black font-semibold text-base lg:text-lg rounded-lg py-2 transition-all duration-300">
+              <button className="w-full text-nowrap px-6 text_color bg-white text-black font-semibold text-base lg:text-lg rounded-lg py-2 transition-all duration-300">
                 Donate Now
               </button>
             </NavLink>

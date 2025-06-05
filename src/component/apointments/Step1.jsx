@@ -26,14 +26,14 @@ export default function Step1({ selectedTime, setSelectedTime, setStep }) {
         <CustomCalendar startDate={startDate} setStartDate={setStartDate} />
       </div>
 
-      <div>
+      <div className="relative">
         <h4 className="text-md font-semibold mb-2">Select Time</h4>
         {loading && (
           <div className="flex justify-center items-center">
             <PiSpinnerBold className="animate-spin" />
           </div>
         )}
-        <div className="">
+        <div className="w-full">
           <Swiper
             ref={swiperRef}
             slidesPerView={2}
@@ -41,8 +41,9 @@ export default function Step1({ selectedTime, setSelectedTime, setStep }) {
               prevEl: ".custom-prev", // Custom prev button
               nextEl: ".custom-next", // Custom next button
             }}
-            modules={[FreeMode, Navigation, Pagination]} // Include Pagination if you want pagination dots
-            className="mySwiper !z-40 !w-[90%]"
+            modules={[ Navigation, Pagination]} // Include Pagination if you want pagination dots
+            className="mySwiper  !z-40  !w-[250px] md:!w-[90%]"
+           
           >
             {data?.map((time, index) => (
               <SwiperSlide key={index}>
@@ -54,7 +55,7 @@ export default function Step1({ selectedTime, setSelectedTime, setStep }) {
                       date: formatDate(startDate),
                     })
                   }
-                  className={`p-2 font-[400] text-[14px] border rounded-lg ${
+                  className={`p-2 font-[400] text-nowrap text-[14px] border rounded-lg ${
                     selectedTime?.startTime === time?.startTime
                       ? "bg-[#49274A0D] text-[#3C043A] border-[#A82E75]"
                       : "border-[#EAEAEA]"

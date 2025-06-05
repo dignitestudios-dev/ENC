@@ -156,18 +156,17 @@ const Detail = () => {
           For professional inquiries, collaborations, or speaking engagements,
           Dr. Rose M. Handon can be reached at:
         </p>
-        <div className="pt-4 flex gap-2">
+        <div className="pt-4 flex flex-wrap items-center gap-2 " >
           <p>Email : </p>
-
           <NavLink
             to="mailto:enc@empowermentnetworkcircle.com"
             target="_blank"
-            className={"text-blue-600"}
+            className={"text-blue-600 "}
           >
             enc@empowermentnetworkcircle.com
-          </NavLink>
+          </NavLink> 
         </div>
-        <div className="pt-2  flex gap-2">
+        <div className="pt-2  flex flex-wrap items-center gap-2">
           <p>Linkedin :</p>
           <NavLink
             className={"text-blue-600"}

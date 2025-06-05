@@ -13,9 +13,9 @@ import "swiper/css/free-mode";
 // import required modules
 import { FreeMode, Autoplay } from "swiper/modules";
 
-const Services = () => {
+const  Services = () => {
   return (
-    <div className="py-20 px-6 lg:px-36 ">
+    <div className="py-20 px-6  lg:px-36 ">
       <Swiper
         // slidesPerView={3}
         spaceBetween={60}

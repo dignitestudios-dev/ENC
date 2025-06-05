@@ -32,8 +32,8 @@ export default function ContactUs() {
     });
 
   return (
-    <div className="bg-gradient-to-r from-[#A82E75] to-[#3C043A] relative flex gap-5 px-10 mt-40 py-10 h-[450px] ">
-      <div className="flex flex-col w-full justify-between h-full">
+    <div className="bg-gradient-to-r from-[#A82E75] to-[#3C043A]  relative flex gap-5  flex-wrap justify-between  px-2 md:px-10 mt-40 py-10 md:h-[450px] ">
+      <div className="flex flex-col  justify-between h-full">
         <div>
           <h3 className="font-[500] text-[32px] text-white">
             Have questions or need <br /> assistance?
@@ -59,8 +59,8 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-      <div className=" w-full ">
-        <div className="bg-white absolute w-[560px] -top-10 px-3 py-5 shadow-[0px_20px_62px_0px_#00000024] rounded-[12px]">
+      <div className=" w-full md:w-[50%] mt-20 md:mt-[0px] ">
+        <div className="bg-white  md:w-[600px]  relative -top-16 px-3 py-5 shadow-[0px_20px_62px_0px_#00000024] rounded-[12px]">
           <h3 className="font-[700] text-[32px]">Get in Touch</h3>
           <p className="text-[20px] font-[400]">You can reach us anytime.</p>
           <form

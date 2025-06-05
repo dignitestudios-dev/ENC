@@ -20,7 +20,7 @@ const CustomCalendar = ({
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           inline
-          calendarClassName="p-5 pb-0 custom-calendar w-full"
+          calendarClassName=" md:p-5 pb-0 custom-calendar w-full"
           minDate={new Date()}
         />
 

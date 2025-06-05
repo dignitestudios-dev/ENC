@@ -13,7 +13,7 @@ const BookingBtn = () => {
     <div className="">
       {/* <div className="w-full h-[30vh] lg:h-[20vh] bg-white"></div> */}
       <div className=" w-full  flex flex-col items-center justify-center px-6 lg:px-32 text-center gap-6 py-20 ">
-        <p className="text-white font-medium pt-6">
+        <p className="text-white font-medium md:mt-40">
           Ready to Connect?
           <br /> Click the button below to schedule your personalized
           appointment and experience the <br /> transformative power of

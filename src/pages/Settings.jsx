@@ -16,7 +16,7 @@ export default function Setting() {
   const [TermCondtition, setTermCondtition] = useState(false);
   const navigate=useNavigate("");
   return (
-    <div className="px-24 py-20 h-screen ">
+    <div className="px-4 md:px-24 py-20 h-screen ">
       <div onClick={()=>navigate(-1)} className="cursor-pointer flex items-center gap-4">
         <FaArrowLeft />
         <h3 className="font-[600] text-[32px]">Settings</h3>

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Appointments() {
     const navigate=useNavigate("");
   return (
-    <div className="px-24 py-20 h-screen ">
+    <div className="px-3 md:px-24 py-20 h-screen ">
       <div className="flex justify-between">
         <div onClick={()=>navigate(-1)} className="cursor-pointer flex items-center gap-4">
           <FaArrowLeft />
