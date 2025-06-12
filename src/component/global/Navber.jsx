@@ -35,7 +35,7 @@ const Navber = () => {
       <div className="w-full relative lg:flex items-center justify-between px-6 lg:px-24 py-3 hidden all-colors text-white ">
         <div className="">
           <NavLink to={"/"} className="text-lg font-medium">
-            <img src="/enclogo1.1.png" alt="" className="w-16" />
+            <img src="/enclogo1.1.png" alt="" className="w-20" />
           </NavLink>
         </div>
         <div className="flex items-center gap-10 ">
@@ -123,7 +123,7 @@ const Navber = () => {
       <div className="w-full flex items-center justify-between px-8 py-2 lg:hidden all-colors">
         <div>
           <NavLink to={"/"} className="text-lg font-medium">
-            <img src="/enclogo1.1.png" alt="" className="w-12" />
+            <img src="/enclogo1.1.png" alt="" className="w-16" />
           </NavLink>
         </div>
 
