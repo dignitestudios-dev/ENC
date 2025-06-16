@@ -48,20 +48,21 @@ const Detail = () => {
           State-commissioned Notary and a Licensed Social Worker through the
           Ohio Chapter of the National Association of Social Workers.
           Additionally, she completed LeanOhio Training through the Ohio
-          Department of Administrative Services, highlighting her proficiency in
-          process improvement and operational efficiency.Mentoring Center of
-          Central Ohio. These awards reflect her commitment to fostering
-          positive change and inspiring the next generation of social workers
-          and community leaders.
+          Department of Administrative Services. There, Dr. Rose also
+          highlighted her proficiency in process improvement and operational
+          efficiency. She was also awarded a certificate from the Mentoring
+          Center of Central Ohio. These awards reflect her commitment to
+          fostering positive change and inspiring the next generation of social
+          workers and community leaders.
         </p>
         <br />
         <p>
-          Her inclusion in Marquis Who’s Who is a testament to her impact and
-          influence in the fields of public policy, social work, and advocacy.
-          The selection process for Marquis Who’s Who recognizes individuals
-          based on position, accomplishments, visibility, and prominence in
-          their respective fields, making Dr. Handon’s recognition a notable
-          achievement.
+          In 2024, the Marquis Who’s Who is a notable American publisher
+          recognized Dr. Rose Handon’s testament to her impact and influence in
+          the fields of public policy, social work, and advocacy. The selection
+          process for Marquis Who’s Who recognizes individuals based on
+          position, accomplishments, visibility, and prominence in their
+          respective fields, making her recognition a notable achievement.
         </p>
       </div>
       <div className="w-full  px-6 xl:px-32 py-10">
@@ -72,20 +73,45 @@ const Detail = () => {
           A personal experience of surviving two strokes ignited Dr. Handon’s
           passion for supporting individuals with disabilities. Her journey from
           survivor to advocate exemplifies her unwavering determination to
-          overcome life’s most challenging moments. She now serves as a peer
-          coach on The Ohio State University Disability Team, offering guidance,
-          empathy, and support to others navigating life after a stroke.
+          overcome life’s most challenging moments. Since 2024, she now serves
+          as a volunteer peer coach on The Ohio State University Disability
+          Team, offering guidance, empathy, and support to others navigating
+          life after a stroke. In addition, she is as a peer coach for the
+          Christopher and Dana Reeve Foundation. Further, she has received
+          training in working with patients who may have also had a spinal cord
+          injury.
         </p>
         <br />
         <p>
           Her work with individuals with disabilities extends to her business,
           Empowerment Network Circle LLC, where she encourages clients to
-          embrace perseverance and push forward despite adversity. She aims to
-          expand her reach globally, engaging with disabled professionals and
-          sharing her story to inspire hope and strength in others.
+          embrace perseverance and to always push forward despite adversity. She
+          aims to expand her reach globally, engaging with disabled citizens and
+          other professionals to inspire hope and strength in others.
         </p>
       </div>
 
+      <div className="w-full  px-6 xl:px-32   py-6">
+        <h2 className="w-full justify-center mt-2 font-bold  text-3xl lg:text-4xl ">
+          Civic Engagement and Community Impact
+        </h2>
+        <p className="mt-2">
+          Dr. Handon’s civic involvement is as robust as her professional
+          career. She has served as Director of Women’s Ministry at Rehoboth
+          Temple Church since 2000. She fosters spiritual growth and empowerment
+          within her community. In addition, her leadership extends to serving
+          on the Human Services Levy Review Committee for the Franklin County
+          Board of Commissioners. She also supports the Seal of Ohio Girl
+          Scouts, following formal service as a troop leader with adolescent
+          youth.
+        </p>
+        <p className="mt-2">
+          Her affiliation with the Christopher and Dana Reeve Foundation and
+          certification as a spinal cord injury volunteer with the Ohio State
+          Hospital demonstrates her dedication to supporting individuals with
+          disabilities
+        </p>
+      </div>
       <div className="w-full  px-6 xl:px-32   py-6">
         <h2 className="w-full justify-center mt-2 font-bold  text-3xl lg:text-4xl ">
           Thought Leadership and Publications
@@ -98,7 +124,8 @@ const Detail = () => {
           Welfare" (The New Social Worker Magazine). Her writings offer valuable
           perspectives on the social work field, shedding light on the
           complexities of child protection and the ethical considerations of
-          client-worker relationships.
+          client-worker relationships. She looks forward to further discussions
+          with others in the disability communities.
         </p>
       </div>
 
@@ -156,7 +183,7 @@ const Detail = () => {
           For professional inquiries, collaborations, or speaking engagements,
           Dr. Rose M. Handon can be reached at:
         </p>
-        <div className="pt-4 flex flex-wrap items-center gap-2 " >
+        <div className="pt-4 flex flex-wrap items-center gap-2 ">
           <p>Email : </p>
           <NavLink
             to="mailto:enc@empowermentnetworkcircle.com"
@@ -164,7 +191,7 @@ const Detail = () => {
             className={"text-blue-600 "}
           >
             enc@empowermentnetworkcircle.com
-          </NavLink> 
+          </NavLink>
         </div>
         <div className="pt-2  flex flex-wrap items-center gap-2">
           <p>Linkedin :</p>

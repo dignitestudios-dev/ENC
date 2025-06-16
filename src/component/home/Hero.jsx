@@ -61,7 +61,7 @@ const Hero = () => {
           <div className="text-center text-white lg:space-y-5 lg:pt-20">
             <h2 className="text-3xl lg:text-5xl font-bold">Our Mission</h2>
             <p className="text-base lg:text-[20px] ">
-              At Empowerment Network Circle (ENC), we believe in the
+              At Empowerment Network Circle (ENC), is an agency that believes in the
               transformative power of perseverance, community, and opportunity.
               Our mission is to empower individuals with disabilities,
               marginalized communities, and professionals striving to break

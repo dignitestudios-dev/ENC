@@ -35,7 +35,7 @@ const Navber = () => {
       <div className="w-full relative lg:flex items-center justify-between px-6 lg:px-24 py-3 hidden all-colors text-white ">
         <div className="">
           <NavLink to={"/"} className="text-lg font-medium">
-            <img src="/enclogo1.1.png" alt="" className="w-20" />
+            <img src="/enclogo1.1.png" alt="" className="w-28"/>
           </NavLink>
         </div>
         <div className="flex items-center gap-10 ">

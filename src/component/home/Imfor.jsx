@@ -26,11 +26,12 @@ const Imfor = () => {
           </p>
           <p className="text-[14px]">
             Shortly after ENC’s inception, Dr. Rose served as a project team
-            manager for a private adoption agency, working as a consultant for
+            manager for a private adoption agency, worked as a consultant for
             ten state adoption agencies to provide leadership, guidance, and
-            strategic support. This role evolved into a leadership position with
-            the Office of the Ohio Attorney General, where she managed a team of
-            16 professionals dedicated to advancing public welfare.
+            strategic support. This role shifted in 2015, as Dr. Rose was
+            selected to serve into a leadership position with the Office of the
+            Ohio Attorney General, where she managed a team of 16 professionals
+            who were dedicated to the settlement of consumer transactions
           </p>
           <p className="text-[14px]">
             Dr. Rose's resilience and unwavering passion for service became the
