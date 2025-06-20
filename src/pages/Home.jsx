@@ -3,6 +3,7 @@ import Imfor from "../component/home/Imfor";
 import BookingBtn from "../component/home/BookingBtn";
 import Notes from "../component/home/Notes";
 import Donate from "../component/home/Donate";
+import Blogs from "../component/blogs/Blogs";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Donate />
       <Notes />
       <BookingBtn />
+      <Blogs/>
     </div>
   );
 };
