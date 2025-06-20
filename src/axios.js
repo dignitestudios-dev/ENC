@@ -31,7 +31,7 @@ const instance = axios.create({
   baseURL: baseUrl,
   headers: {
     devicemodel: getDeviceName(),
-    deviceuniqueid: getDeviceId(),.
+    deviceuniqueid: getDeviceId(),
   },
   timeout: 10000, // 10 seconds timeout
 });
