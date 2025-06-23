@@ -50,7 +50,7 @@ const Detail = () => {
           Additionally, she completed LeanOhio Training through the Ohio
           Department of Administrative Services. There, Dr. Rose also
           highlighted her proficiency in process improvement and operational
-          efficiency. She was also awarded a certificate from the Mentoring
+          efficiency She was also awarded a certificate from the Mentoring
           Center of Central Ohio. These awards reflect her commitment to
           fostering positive change and inspiring the next generation of social
           workers and community leaders.
@@ -184,14 +184,15 @@ const Detail = () => {
           Dr. Rose M. Handon can be reached at:
         </p>
         <div className="pt-4 flex flex-wrap items-center gap-2 ">
-          <p>Email : </p>
-          <NavLink
-            to="mailto:enc@empowermentnetworkcircle.com"
-            target="_blank"
-            className={"text-blue-600 "}
-          >
-            enc@empowermentnetworkcircle.com
-          </NavLink>
+          <p>
+            Email:{" "}
+            <a
+              href="mailto:enc@empowermentnetworkcircle.com"
+              className="text-blue-600"
+            >
+              enc@empowermentnetworkcircle.com
+            </a>
+          </p>
         </div>
         <div className="pt-2  flex flex-wrap items-center gap-2">
           <p>Linkedin :</p>
